@@ -10,5 +10,5 @@ package model;
  * @author Denis
  */
 public class AdminModel {
-   ///TODO 
+   //TODO 
 }
