@@ -1,5 +1,6 @@
 
 package model;
+import hibernateModel.User;
 import java.util.regex.*;
 
 
@@ -21,6 +22,8 @@ public class RegisterModel {
     private String postalcode;
     private String phone;
     private String rank = "user";
+    private User usernameValid;
+    private User emailValid;
     private final String usernamePattern;
     private final String emailPattern;
     private boolean emailCheck;
@@ -34,6 +37,23 @@ public class RegisterModel {
         this.usernamePattern = "^[a-zA-Z0-9_-]{5,15}$";
         this.emailPattern  = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
     }
+
+    public User getEmailValid() {
+        return emailValid;
+    }
+
+    public void setEmailValid(User emailValid) {
+        this.emailValid = emailValid;
+    }
+
+    public User getUsernameValid() {
+        return usernameValid;
+    }
+
+    public void setUsernameValid(User usernameValid) {
+        this.usernameValid = usernameValid;
+    }
+    
 
     public String getRank() {
         return rank;

@@ -8,7 +8,6 @@ package hibernateDAO;
 
 import hibernateUtils.RegisterUtil;
 import hibernateModel.User;
-import model.RegisterModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,6 +17,8 @@ import org.hibernate.Transaction;
  * @author Chris
  */
 public class RegisterDAO {
+    
+    User query = new User();
     
     public void addUser(User user){
         Session session = RegisterUtil.getSessionFactory().openSession();
@@ -37,5 +38,43 @@ public class RegisterDAO {
         }
     }
     
+    public User checkUsername(String username){
+        
+        Session session = RegisterUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            query = (User) session.createQuery("from User as user where user.username = '"+username+"'").uniqueResult();
+            transaction.commit();
+            
+            
+        }catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        return query;
+    }
     
+    public User checkEmail(String email){
+        
+        Session session = RegisterUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            query = (User) session.createQuery("from User as user where user.email = '"+email+"'").uniqueResult();
+            transaction.commit();
+            
+            
+        }catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        return query;
+    }
 }
