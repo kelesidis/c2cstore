@@ -6,6 +6,7 @@
 package hibernateDAO;
 
 
+import hibernateModel.Storeitems;
 import hibernateUtils.RegisterUtil;
 import hibernateModel.User;
 import org.hibernate.HibernateException;
@@ -65,6 +66,26 @@ public class RegisterDAO {
         try{
             transaction = session.beginTransaction();
             query = (User) session.createQuery("from User as user where user.email = '"+email+"'").uniqueResult();
+            transaction.commit();
+            
+            
+        }catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        return query;
+    }
+    
+    public Storeitems retrieveItems(){
+        Storeitems query = new Storeitems(); 
+        Session session = RegisterUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            query = (Storeitems) session.createQuery("from Storeitems as storeitems where Price = 10").uniqueResult();
             transaction.commit();
             
             

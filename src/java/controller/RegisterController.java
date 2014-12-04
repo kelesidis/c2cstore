@@ -4,6 +4,7 @@ package controller;
 
 
 import hibernateDAO.RegisterDAO;
+import hibernateModel.Storeitems;
 import hibernateModel.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -58,13 +59,15 @@ public class RegisterController extends HttpServlet {
                    
                    User usernameCheck = new User();
                    User emailCheck = new User();
-                   RegisterDAO checkDAO = new RegisterDAO();
-                   usernameCheck = checkDAO.checkUsername(rm.getUsername());
+                   RegisterDAO registerDAO = new RegisterDAO();
+                   usernameCheck = registerDAO.checkUsername(rm.getUsername());
 //                   emailCheck = checkDAO.checkEmail(rm.getEmail());
                    rm.setUsernameValid(usernameCheck);
 //                   rm.setEmailValid(emailCheck); TODO: Check if user have already register with that email.
                    
-                   
+                   Storeitems si = new Storeitems();
+                   si = registerDAO.retrieveItems();
+                   request.setAttribute("item", si);
                    
                    boolean status = rm.validate();
                    

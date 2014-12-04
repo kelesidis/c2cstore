@@ -18,6 +18,7 @@ public class Storeitems  implements java.io.Serializable {
      private String photo2;
      private String photo3;
      private int quantity;
+     private Storeitems item;
 
     public Storeitems() {
     }
@@ -32,7 +33,16 @@ public class Storeitems  implements java.io.Serializable {
        this.photo3 = photo3;
        this.quantity = quantity;
     }
+
+    public Storeitems getItem() {
+        return item;
+    }
+
+    public void setItem(Storeitems item) {
+        this.item = item;
+    }
    
+    
     public Integer getId() {
         return this.id;
     }
