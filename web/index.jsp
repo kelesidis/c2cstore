@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td align="right">    <input type="submit" value="login"> </form></td>
-                <td> <form action="SignUp" method="post"> <input type="submit" value="Register"> </form> </td>
+                <td> <form action="Register" method="post"> <input type="submit" value="Register"> </form> </td>
             </tr>
         </table>
     </body>
