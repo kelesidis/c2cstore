@@ -84,7 +84,6 @@ public class RegisterController extends HttpServlet {
                                 RegisterDAO userDAO = new RegisterDAO();
                                 userDAO.addUser(user);
 
-                                request.setAttribute("bean",user);
                                 RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                                 rd.forward(request, response);
                        }

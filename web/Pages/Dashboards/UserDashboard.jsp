@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>USER CONTROL PANEL</title>
+        <title>c2c Homepage</title>
     </head>
     <body>
        <p>You are successfully logged in!</p><br />
@@ -41,21 +41,26 @@
             List<Storeitems> si = null;
             si=(List<Storeitems>)request.getSession().getAttribute("randomitems");
             out.print("Current Offers");
-                for(int i = 0; i<si.size(); i++){
+            out.print("<table border = '1'>");
+            out.print("<tr>");
+                out.print("<td></td>");
+                out.print("<td>Price </td>");
+                out.print("<td>Description </td>");
+                out.print("<td>Quantity</td>");
+            out.print("<tr>");
+            for(int i = 0; i<si.size(); i++){
+                out.print("<br />");
+                
                     out.print("<tr>");
-                        out.print("<td></td>");
-                        out.print("<td>Price</td>");
-                        out.print("<td>Description</td>");
-                        out.print("<td>Quantity</td>");
+                        out.print("<td>Item "+ (i+1)+"</td>");
+                        out.print("<td>" + si.get(i).getPrice()+"</td>");
+                        out.print("<td>" + si.get(i).getDescription()+"</td>");
+                        out.print("<td>" + si.get(i).getQuantity()+"</td>");
                     out.print("<tr>");
-                    out.print("<tr>");
-                        out.print("<td>Item "+i+"</td>");
-                        out.print("<td>"+si.get(i).getPrice()+"</td>");
-                        out.print("<td>"+si.get(i).getDescription()+"</td>");
-                        out.print("<td>"+si.get(i).getQuantity()+"</td>");
-                    out.print("<tr>");
-                    
-                }
+                
+                out.print("<br />");
+            }
+            out.print("</table>");
         %>
     </body>
 </html>
