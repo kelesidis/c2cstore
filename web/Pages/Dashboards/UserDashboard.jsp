@@ -1,13 +1,15 @@
+<%@page import="java.util.List"%>
 <%@page import="hibernateModel.User"%> 
+<%@page import="hibernateModel.Storeitems"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>USER CONTROL PANEL</title>
+        <title>c2c Homepage</title>
     </head>
     <body>
-       <p>You are successfully logged in!</p> 
+       <p>You are successfully logged in!</p><br />
        <%  
             User user=(User)request.getSession().getAttribute("user");//.getAttribute("bean");  
             out.print("Welcome, "+user.getName());
@@ -24,7 +26,7 @@
                    <td align="center"><form action="Store" method="post"><input type="submit" value="Manage Store"></form></td>
                </tr>
                <tr>
-                   <td align="center"><form action="Contact" method="post"><input type="submit" value="Contact Us"></form></td>
+                   <td align="center"><form action="aboutFrm" method="post"><input type="submit" value="Contact Us"></form></td>
                </tr>
                <tr>
                    <td align="center"><form action="Settings" method="post"><input type="submit" value="Settings"></form></td>
@@ -34,6 +36,31 @@
                </tr>
            </tbody>
        </table>
-
+        <br /><br/>
+        <%  
+            List<Storeitems> si = null;
+            si=(List<Storeitems>)request.getSession().getAttribute("randomitems");
+            out.print("Current Offers");
+            out.print("<table border = '1'>");
+            out.print("<tr>");
+                out.print("<td></td>");
+                out.print("<td>Price </td>");
+                out.print("<td>Description </td>");
+                out.print("<td>Quantity</td>");
+            out.print("<tr>");
+            for(int i = 0; i<si.size(); i++){
+                out.print("<br />");
+                
+                    out.print("<tr>");
+                        out.print("<td>Item "+ (i+1)+"</td>");
+                        out.print("<td>" + si.get(i).getPrice()+"</td>");
+                        out.print("<td>" + si.get(i).getDescription()+"</td>");
+                        out.print("<td>" + si.get(i).getQuantity()+"</td>");
+                    out.print("<tr>");
+                
+                out.print("<br />");
+            }
+            out.print("</table>");
+        %>
     </body>
 </html>
