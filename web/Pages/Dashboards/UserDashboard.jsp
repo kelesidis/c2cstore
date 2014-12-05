@@ -1,33 +1,39 @@
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@page import="hibernateModel.User"%>  
-<%@page import="hibernateModel.Storeitems"%>
-  
-
-<%  
-User user=(User)request.getAttribute("bean");  
-out.print("Welcome, "+user.getName());  
-
-
-%> 
-
+<%@page import="hibernateModel.User"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>c2c Store Home Page</title>
+        <title>USER CONTROL PANEL</title>
     </head>
     <body>
-        <form action="Search">
-            <br />
-            Search by Item: <input type="text" name="search" /><input type="submit" value="search"/></form>&nbsp;&nbsp;&nbsp;&nbsp; 
-            <form action="UserPanelController"><select name="choice">
-                                                    <option>Menu</option>
-                                                    <option value="store">Store</option>
-                                                    <option value="contact">Contact</option>
-                                                    <option value="settings">Settings</option>
-                                                    <option value="logout">Logout</option>
-                                               </select><input type="submit" value="go"/>
-            </form>   
-        <%-- Storeitems item = (Storeitems)request.getAttribute("item");
-        out.print("The price is" + item.getDescription());--%>
+       <p>You are successfully logged in!</p> 
+       <%  
+            User user=(User)request.getSession().getAttribute("user");//.getAttribute("bean");  
+            out.print("Welcome, "+user.getName());
+       %> 
+       <br />
+       <form action="Search" method="POST">
+           Search by Item<input type="text" name="searchtext">
+           <input type="submit" value="Go">
+       </form>
+       <br /><br/>
+       <table>
+           <tbody>
+               <tr>
+                   <td align="center"><form action="Store" method="post"><input type="submit" value="Manage Store"></form></td>
+               </tr>
+               <tr>
+                   <td align="center"><form action="Contact" method="post"><input type="submit" value="Contact Us"></form></td>
+               </tr>
+               <tr>
+                   <td align="center"><form action="Settings" method="post"><input type="submit" value="Settings"></form></td>
+               </tr>
+               <tr>
+                   <td align="center"><form action="Logout" method="post"><input type="submit" value="Logout"></form></td>
+               </tr>
+           </tbody>
+       </table>
+
     </body>
 </html>

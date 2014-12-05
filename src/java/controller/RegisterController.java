@@ -65,9 +65,6 @@ public class RegisterController extends HttpServlet {
                    rm.setUsernameValid(usernameCheck);
 //                   rm.setEmailValid(emailCheck); TODO: Check if user have already register with that email.
                    
-                   Storeitems si = new Storeitems();
-                   si = registerDAO.retrieveItems();
-                   request.setAttribute("item", si);
                    
                    boolean status = rm.validate();
                    
@@ -88,7 +85,7 @@ public class RegisterController extends HttpServlet {
                                 userDAO.addUser(user);
 
                                 request.setAttribute("bean",user);
-                                RequestDispatcher rd = request.getRequestDispatcher("/Pages/Dashboards/UserDashboard.jsp");
+                                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                                 rd.forward(request, response);
                        }
                    }

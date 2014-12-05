@@ -1,7 +1,5 @@
     package controller;  
     import hibernateDAO.LoginDAO;
-import hibernateDAO.RegisterDAO;
-import hibernateModel.Storeitems;
     import model.LoginUserModel;
     import java.io.IOException;  
     import java.io.PrintWriter;  
@@ -33,13 +31,8 @@ import hibernateModel.Storeitems;
                 String dispaddress = LUM.getRDFoward();
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher(dispaddress);  
-                request.setAttribute("bean",ur);
+                request.getSession(true).setAttribute("user", ur);//STARTS A SESSION
                 rd.forward(request, response);
-                //Προσθεσα τις παρακάτω 4 γραμμές κώδικα για τρέχουν και στο login οι τυχαίες προσφορές.
-                RegisterDAO registerDAO = new RegisterDAO();
-                Storeitems si = new Storeitems();
-                si = registerDAO.retrieveItems();
-                request.setAttribute("item", si);
               
                 
             }
