@@ -1,4 +1,6 @@
+<%@page import="java.util.List"%>
 <%@page import="hibernateModel.User"%> 
+<%@page import="hibernateModel.Storeitems"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +9,7 @@
         <title>USER CONTROL PANEL</title>
     </head>
     <body>
-       <p>You are successfully logged in!</p> 
+       <p>You are successfully logged in!</p><br />
        <%  
             User user=(User)request.getSession().getAttribute("user");//.getAttribute("bean");  
             out.print("Welcome, "+user.getName());
@@ -34,6 +36,26 @@
                </tr>
            </tbody>
        </table>
-
+        <br /><br/>
+        <%  
+            List<Storeitems> si = null;
+            si=(List<Storeitems>)request.getSession().getAttribute("randomitems");
+            out.print("Current Offers");
+                for(int i = 0; i<si.size(); i++){
+                    out.print("<tr>");
+                        out.print("<td></td>");
+                        out.print("<td>Price</td>");
+                        out.print("<td>Description</td>");
+                        out.print("<td>Quantity</td>");
+                    out.print("<tr>");
+                    out.print("<tr>");
+                        out.print("<td>Item "+i+"</td>");
+                        out.print("<td>"+si.get(i).getPrice()+"</td>");
+                        out.print("<td>"+si.get(i).getDescription()+"</td>");
+                        out.print("<td>"+si.get(i).getQuantity()+"</td>");
+                    out.print("<tr>");
+                    
+                }
+        %>
     </body>
 </html>

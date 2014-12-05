@@ -6,6 +6,12 @@
 package hibernateDAO;
 
 import hibernateModel.Storeitems;
+import hibernateUtils.RegisterUtil;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -13,9 +19,24 @@ import hibernateModel.Storeitems;
  */
 public class UserPanelDAO {
     
-    public Storeitems retrieveItem(){
-        Storeitems query = new Storeitems();
-        return query;
+    public List<Storeitems> retrieveItems(){
+        Session session = RegisterUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Storeitems> item = new ArrayList<Storeitems>();
+        try{
+            transaction = session.beginTransaction();
+            item = (List<Storeitems>) session.createQuery ("from Storeitems as storeitems where storeitems.id > '0'").list();
+            transaction.commit();
+            
+            
+        }catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        return item;
     }
     
 }

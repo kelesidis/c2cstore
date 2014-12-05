@@ -30,23 +30,23 @@ public class UserPanelController extends HttpServlet {
                    throws ServletException, IOException {  
                response.setContentType("text/html");  
                
-               String selected = request.getParameter("choice");
-               if("store".equals(selected)){
-                   RequestDispatcher rd=request.getRequestDispatcher("");  
-                   rd.forward(request, response);
-               }
-               else if("contact".equals(selected)){
-                   RequestDispatcher rd=request.getRequestDispatcher("");  
-                   rd.forward(request, response);
-               }
-               else if("settings".equals(selected)){
-                   RequestDispatcher rd=request.getRequestDispatcher("");  
-                   rd.forward(request, response);
-               }
-               else{
-                   RequestDispatcher rd=request.getRequestDispatcher("");  
-                   rd.forward(request, response);
-               }
+//               String selected = request.getParameter("choice");
+//               if("store".equals(selected)){
+//                   RequestDispatcher rd=request.getRequestDispatcher("");  
+//                   rd.forward(request, response);
+//               }
+//               else if("contact".equals(selected)){
+//                   RequestDispatcher rd=request.getRequestDispatcher("");  
+//                   rd.forward(request, response);
+//               }
+//               else if("settings".equals(selected)){
+//                   RequestDispatcher rd=request.getRequestDispatcher("");  
+//                   rd.forward(request, response);
+//               }
+//               else{
+//                   RequestDispatcher rd=request.getRequestDispatcher("");  
+//                   rd.forward(request, response);
+//               }
                
     }
       
