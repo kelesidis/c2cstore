@@ -5,6 +5,7 @@
  */
 package hibernateDAO;
 
+import hibernateModel.Categories;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
@@ -90,5 +91,29 @@ public class StoreCheckDAO {
        
 
         return itemList;
+    }
+    
+    public void addItem(String desc,String quantity, Store store){
+        LoginUtil LU = new LoginUtil();
+        
+        Session session = LU.getFactorySession().openSession();
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        
+        //Store store =  (Store) session.createQuery("from Store as store where store.storename = "+"'"+storeName+"'").uniqueResult();
+        Storeitems item = new Storeitems();
+        item.setDescription(desc);
+        item.setPrice("15");
+        item.setPhoto1("1");
+        item.setPhoto2("2");
+        item.setPhoto3("3");
+        item.setQuantity(Integer.parseInt(quantity));
+        Categories cat = (Categories) session.createQuery("from Categories as categories where categories.id = 1 ").uniqueResult();
+        item.setStore(store);
+        item.setCategories(cat);
+        session.save(item);
+        tx.commit();
+        session.close();   
+        
     }
 }

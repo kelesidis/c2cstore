@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items"})
+@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem"})
 public class StoreController extends HttpServlet {
 
     @Override
@@ -79,32 +79,50 @@ public class StoreController extends HttpServlet {
                 
                 StoreCheckDAO SC = new StoreCheckDAO();
                 List<Storeitems> si = null;
-                Storeitems item = new Storeitems();
+                //Storeitems item = new Storeitems();
                 si=(List<Storeitems>)SC.getItems((Store)request.getSession().getAttribute("store"));
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet NewServlet</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Servlet NewServlet at " + si.get(1).getPrice() + "</h1>");
-                out.println("</body>");
-                out.println("</html>");
+                request.getSession().setAttribute("items", si);
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Itemlist.jsp");
+                rd.forward(request, response);
+//                out.println("<!DOCTYPE html>");
+//                out.println("<html>");
+//                out.println("<head>");
+//                out.println("<title>Servlet NewServlet</title>");            
+//                out.println("</head>");
+//                out.println("<body>");
+//                out.println("<h1>Servlet NewServlet at " + si.get(1).getPrice() + "</h1>");
+//                out.println("</body>");
+//                out.println("</html>");
             
             }
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet NewServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet NewServlet at " + ur.getPassword() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
+            else if(URL.equals("/AddItemConf")){
+                
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/AddItem.jsp");
+                rd.forward(request, response);
             
  
-        }  
+            } 
+            else if(URL.equals("/AddItem")){
+                StoreCheckDAO SC = new StoreCheckDAO();
+                SC.addItem(request.getParameter("desc"), request.getParameter("qua"),(Store)request.getSession().getAttribute("store"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+//                out.println("<!DOCTYPE html>");
+//                out.println("<html>");
+//                out.println("<head>");
+//                out.println("<title>Servlet NewServlet</title>");            
+//                out.println("</head>");
+//                out.println("<body>");
+//                out.println("<h1>Servlet NewServlet at " + item.getPrice()+item.getCategories()+item.getQuantity()+item.getDescription()+item.getStore().getStorename() + "</h1>");
+//                out.println("</body>");
+//                out.println("</html>");
+            
+ 
+            } 
 
-
+    }
 
 }
