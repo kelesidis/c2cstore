@@ -31,7 +31,7 @@
                 String dispaddress = LUM.getRDFoward();
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher(dispaddress);  
-                request.setAttribute("bean",ur);
+                request.getSession(true).setAttribute("user", ur);//STARTS A SESSION
                 rd.forward(request, response);
               
                 

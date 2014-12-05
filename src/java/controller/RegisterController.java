@@ -4,6 +4,7 @@ package controller;
 
 
 import hibernateDAO.RegisterDAO;
+import hibernateModel.Storeitems;
 import hibernateModel.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,21 +57,37 @@ public class RegisterController extends HttpServlet {
                    rm.validateEmail();
                    rm.validatePassword();
                    
+                   User usernameCheck = new User();
+                   User emailCheck = new User();
+                   RegisterDAO registerDAO = new RegisterDAO();
+                   usernameCheck = registerDAO.checkUsername(rm.getUsername());
+//                   emailCheck = checkDAO.checkEmail(rm.getEmail());
+                   rm.setUsernameValid(usernameCheck);
+//                   rm.setEmailValid(emailCheck); TODO: Check if user have already register with that email.
                    
                    
                    boolean status = rm.validate();
                    
                    if(status){
-                       
-                       User user = new User(rm.getName(), rm.getSurname(), rm.getUsername(), rm.getRank(), rm.getEmail(), rm.getSequrityquestion(), rm.getSecurityanswer(),
-                                                        rm.getPassword(), rm.getCity(), rm.getCountry(), rm.getState(), rm.getAddress(), rm.getPostalcode(), rm.getPhone());
-                       RegisterDAO userDAO = new RegisterDAO();
-                       userDAO.addUser(user);
-                       
-                       request.setAttribute("bean",user);
-                       RequestDispatcher rd = request.getRequestDispatcher("/Pages/Dashboards/UserLoginSuccess.jsp");
-                       rd.forward(request, response);
-                       
+                       try{
+                           if(rm.getUsernameValid().getUsername().equals(rm.getUsername())){
+                                RequestDispatcher rd=request.getRequestDispatcher("/Pages/SignUp/UsernameExist.jsp");  
+                                rd.forward(request, response);
+                           }
+//                         if(rm.getEmailValid().getEmail().equals(rm.getEmail())){
+//                                RequestDispatcher rd=request.getRequestDispatcher("/Pages/SignUp/EmailExist.jsp");  
+//                                rd.forward(request, response);
+//                          }
+                       }catch(java.lang.NullPointerException ex){
+                                User user = new User(rm.getName(), rm.getSurname(), rm.getUsername(), rm.getRank(), rm.getEmail(), rm.getSequrityquestion(), rm.getSecurityanswer(),
+                                                             rm.getPassword(), rm.getCity(), rm.getCountry(), rm.getState(), rm.getAddress(), rm.getPostalcode(), rm.getPhone());
+                                RegisterDAO userDAO = new RegisterDAO();
+                                userDAO.addUser(user);
+
+                                request.setAttribute("bean",user);
+                                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                                rd.forward(request, response);
+                       }
                    }
                    else {
                        if((((rm.isUsernameCheck()==false) && (rm.isEmailCheck()==true)) && (rm.isPasswordCheck()==true))){

@@ -40,11 +40,11 @@
                     <td><label>Security Question</label></td>
                     <td align="right">
                         <select name="question">
-                            <option value="1">What is the name of your pet?</option>
-                            <option value="2">What is the name of your city birth</option>
-                            <option value="3">What was your first car?</option>
-                            <option value="4">You love programming?</option>
-                        </select>
+                            <option value="What is the name of your pet?">What is the name of your pet?</option>
+                            <option value="What is the name of your city birth">What is the name of your city birth</option>
+                            <option value="What was your first car?">What was your first car?</option>
+                            <option value="You love programming?">You love programming?</option>
+                      </select>
                     </td>
                 </tr>
                 <tr>
