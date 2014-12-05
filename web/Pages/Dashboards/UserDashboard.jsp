@@ -26,7 +26,7 @@
                    <td align="center"><form action="Store" method="post"><input type="submit" value="Manage Store"></form></td>
                </tr>
                <tr>
-                   <td align="center"><form action="Contact" method="post"><input type="submit" value="Contact Us"></form></td>
+                   <td align="center"><form action="aboutFrm" method="post"><input type="submit" value="Contact Us"></form></td>
                </tr>
                <tr>
                    <td align="center"><form action="Settings" method="post"><input type="submit" value="Settings"></form></td>
