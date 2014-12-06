@@ -1,4 +1,4 @@
-package controller;
+package hibernateDAO;
 
 import com.sun.mail.smtp.SMTPTransport;
 import java.security.Security;
@@ -11,10 +11,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import model.ModelMail;
 //CLASS SET MAIL SENDING PROPERTIES
-public class sendMail
+public class MailDAO
 {
     ModelMail sm = new ModelMail();
-    public sendMail(ModelMail inSm)
+    public MailDAO(ModelMail inSm)
     {
         this.sm = inSm;
     }
