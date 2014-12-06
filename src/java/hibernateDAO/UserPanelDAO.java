@@ -24,16 +24,10 @@ public class UserPanelDAO {
         Session session = RegisterUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         List<Storeitems> item = new ArrayList<Storeitems>();
-        List<Storeitems> currentlist = new ArrayList<Storeitems>();
         try{
             transaction = session.beginTransaction();
-            item = (List<Storeitems>) session.createQuery ("from Storeitems as storeitems where storeitems.id > '0'").list();
+            item = (List<Storeitems>) session.createQuery ("from Storeitems as storeitems order by rand()").setMaxResults(3).list();
             transaction.commit();
-            
-            Random randomizer = new Random();
-            currentlist.add(0, item.get(randomizer.nextInt(item.size())));
-            currentlist.add(1, item.get(randomizer.nextInt(item.size())));
-            currentlist.add(2, item.get(randomizer.nextInt(item.size())));
             
         }catch (HibernateException e) {
             transaction.rollback();
@@ -42,7 +36,7 @@ public class UserPanelDAO {
         finally {
         session.close();
         }
-        return currentlist;
+        return item;
     }
     
 }
