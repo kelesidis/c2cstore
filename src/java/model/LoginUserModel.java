@@ -44,7 +44,7 @@
         if(user.getPassword().equals(password)){
         
             if(user.getRank().equals("user")){
-                return "/Pages/Dashboards/UserLoginSuccess.jsp";
+                return "/Pages/Dashboards/UserDashboard.jsp";
             }
             else if(user.getRank().equals("moderator")){
                 return "/Pages/Dashboards/ModeratorDashboard.jsp";

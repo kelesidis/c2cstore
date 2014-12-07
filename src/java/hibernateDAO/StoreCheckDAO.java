@@ -93,7 +93,7 @@ public class StoreCheckDAO {
         return itemList;
     }
     
-    public void addItem(String desc,String quantity, Store store){
+    public void addItem(String desc,String quantity, Store store, String price, String category){
         LoginUtil LU = new LoginUtil();
         
         Session session = LU.getFactorySession().openSession();
@@ -103,17 +103,31 @@ public class StoreCheckDAO {
         //Store store =  (Store) session.createQuery("from Store as store where store.storename = "+"'"+storeName+"'").uniqueResult();
         Storeitems item = new Storeitems();
         item.setDescription(desc);
-        item.setPrice("15");
+        item.setPrice(price);
         item.setPhoto1("1");
         item.setPhoto2("2");
         item.setPhoto3("3");
         item.setQuantity(Integer.parseInt(quantity));
-        Categories cat = (Categories) session.createQuery("from Categories as categories where categories.id = 1 ").uniqueResult();
+        Categories cat = (Categories) session.createQuery("from Categories as categories where categories.categoriename ='"+category+"'").uniqueResult();
         item.setStore(store);
         item.setCategories(cat);
         session.save(item);
         tx.commit();
         session.close();   
         
+    }
+    
+    public List getCategories(){
+        List<Categories> categories = null;
+        LoginUtil LU = new LoginUtil();
+        Session session = LU.getFactorySession().openSession();
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        Query q = session.createQuery ("from Categories as categories where categories.id > 0"  );
+        categories = (List<Categories>) q.list();
+        categories =  q.list();
+       
+
+        return categories;
     }
 }

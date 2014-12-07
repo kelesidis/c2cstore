@@ -6,6 +6,7 @@
 package controller;
 
 import hibernateDAO.StoreCheckDAO;
+import hibernateModel.Categories;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
@@ -80,8 +81,8 @@ public class StoreController extends HttpServlet {
                 StoreCheckDAO SC = new StoreCheckDAO();
                 List<Storeitems> si = null;
                 //Storeitems item = new Storeitems();
-                si=(List<Storeitems>)SC.getItems((Store)request.getSession().getAttribute("store"));
-                request.getSession().setAttribute("items", si);
+                si=(List<Storeitems>)SC.getItems((Store)request.getSession().getAttribute("store")); 
+                request.getSession().setAttribute("items", si); 
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher("/Pages/Store/Itemlist.jsp");
                 rd.forward(request, response);
@@ -97,16 +98,20 @@ public class StoreController extends HttpServlet {
             
             }
             else if(URL.equals("/AddItemConf")){
-                
+                StoreCheckDAO SC = new StoreCheckDAO();
+                List<Categories> categories = null;
+                categories = (List<Categories>)SC.getCategories();
+                request.getSession().setAttribute("categories", categories);
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher("/Pages/Store/AddItem.jsp");
+                
                 rd.forward(request, response);
             
  
             } 
             else if(URL.equals("/AddItem")){
                 StoreCheckDAO SC = new StoreCheckDAO();
-                SC.addItem(request.getParameter("desc"), request.getParameter("qua"),(Store)request.getSession().getAttribute("store"));
+                SC.addItem(request.getParameter("desc"), request.getParameter("qua"),(Store)request.getSession().getAttribute("store"),request.getParameter("price"), request.getParameter("category"));
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
                 rd.forward(request, response);

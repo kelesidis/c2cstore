@@ -1,5 +1,7 @@
     package controller;  
     import hibernateDAO.LoginDAO;
+import hibernateDAO.UserPanelDAO;
+import hibernateModel.Storeitems;
     import model.LoginUserModel;
     import java.io.IOException;  
     import java.io.PrintWriter;  
@@ -10,6 +12,8 @@
     import javax.servlet.http.HttpServletResponse; 
     //import hibernateUtis.LoginUtil;
     import hibernateModel.User;
+import java.util.ArrayList;
+import java.util.List;
     
     public class LoginController extends HttpServlet {  
         @Override
@@ -32,6 +36,13 @@
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher(dispaddress);  
                 request.getSession(true).setAttribute("user", ur);//STARTS A SESSION
+                
+                UserPanelDAO upd = new UserPanelDAO();
+                List<Storeitems> items = null;
+                items =(List<Storeitems>)upd.retrieveItems();
+                
+                request.getSession().setAttribute("randomitems", items);
+                
                 rd.forward(request, response);
               
                 
