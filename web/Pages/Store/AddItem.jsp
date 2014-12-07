@@ -15,11 +15,13 @@
         <title>Store Items</title>
     </head>
     <body>
-        <h1><tr><%  
+        <h1><tr>
+                <%  
                     Store store=(Store)request.getSession().getAttribute("store");//.getAttribute("bean");  
                     out.print(store.getStorename());
                     List<Categories> cats = (List<Categories>)request.getSession().getAttribute("categories");
-                    %></tr>
+                %>
+            </tr>
         </h1>
         <table>
             <form action="AddItem" method="post">

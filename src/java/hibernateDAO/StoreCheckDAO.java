@@ -31,14 +31,6 @@ public class StoreCheckDAO {
         tx.commit();
         session.close(); 
         return store;
-//        if(store == null){
-//            return false;
-//            //return "/Pages/Store/CreateStore.jsp";
-//        }
-//        else{
-//            return true;
-//            //return "/Pages/Store/Store.jsp";
-//        }
         
      
     }
@@ -68,7 +60,6 @@ public class StoreCheckDAO {
         Session session = LU.getFactorySession().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
-        //Store store =  (Store) session.createQuery("from Store as store where store.storename = "+"'"+storeName+"'").uniqueResult();
         Store store = new Store();
         store.setStorename(storeName);
         store.setUser(ur);
