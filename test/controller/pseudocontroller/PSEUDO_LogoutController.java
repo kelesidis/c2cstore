@@ -19,19 +19,23 @@ import javax.servlet.http.HttpSession;
  * @author Chris
  */
 @WebServlet(name = "LogoutController", urlPatterns = {"/Logout"})
-public class LogoutController extends HttpServlet {
+public class PSEUDO_LogoutController extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  
+    public int doPost(String userPath)  
                    throws ServletException, IOException {  
-               response.setContentType("text/html");  
+               //response.setContentType("text/html");  
+               int toreturned = 0;
                
-                RequestDispatcher rd=request.getRequestDispatcher("/Pages/Logout/Logout.jsp");  
-                rd.forward(request, response);
-                HttpSession session = request.getSession(false);
-                if (session != null) {
-                    session.invalidate();
-                }
+               if(userPath.equals("Logout")){
+                   toreturned = 1;
+    //             RequestDispatcher rd=request.getRequestDispatcher("/Pages/Logout/Logout.jsp");  
+    //             rd.forward(request, response);
+    //             HttpSession session = request.getSession(false);
+    //             if (session != null) {
+    //                session.invalidate();
+    //             }
+               }
+               return toreturned;
     }
       
     @Override  
