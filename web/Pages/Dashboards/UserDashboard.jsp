@@ -50,14 +50,12 @@
             out.print("<tr>");
             for(int i = 0; i<si.size(); i++){
                 out.print("<br />");
-                
                     out.print("<tr>");
                         out.print("<td>Item "+ (i+1)+"</td>");
                         out.print("<td>" + si.get(i).getPrice()+"</td>");
                         out.print("<td>" + si.get(i).getDescription()+"</td>");
                         out.print("<td>" + si.get(i).getQuantity()+"</td>");
                     out.print("<tr>");
-                
                 out.print("<br />");
             }
             out.print("</table>");

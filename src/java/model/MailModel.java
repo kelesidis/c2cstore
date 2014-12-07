@@ -1,6 +1,6 @@
 package model;
 
-public class ModelMail
+public class MailModel
 {
     private String uName = "chrisnmr72";
     private String passwd = "+R+I+P+R+I+P+";

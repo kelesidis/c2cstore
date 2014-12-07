@@ -1,5 +1,6 @@
-package controller;
+package model;
 
+import hibernateDAO.*;
 import com.sun.mail.smtp.SMTPTransport;
 import java.security.Security;
 import java.util.Date;
@@ -9,12 +10,12 @@ import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import model.ModelMail;
+import model.MailModel;
 //CLASS SET MAIL SENDING PROPERTIES
-public class sendMail
+public class SendMailModel
 {
-    ModelMail sm = new ModelMail();
-    public sendMail(ModelMail inSm)
+    MailModel sm = new MailModel();
+    public SendMailModel(MailModel inSm)
     {
         this.sm = inSm;
     }
