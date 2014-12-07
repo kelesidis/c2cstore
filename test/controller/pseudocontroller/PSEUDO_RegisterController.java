@@ -22,7 +22,7 @@ public class PSEUDO_RegisterController extends HttpServlet {
              
         
         int toreturned = 0;
-
+        
         if (userPath.equals("/Register")) {
             //RequestDispatcher rd=request.getRequestDispatcher("/Pages/SignUp/Register.jsp");  
             //rd.forward(request, response);

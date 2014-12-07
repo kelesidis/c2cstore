@@ -13,14 +13,15 @@
         <title>Store</title>
     </head>
     <body>
-        <table>
-            <form action="Items" method="post">
-                <tr><%  
-            Store store=(Store)request.getSession().getAttribute("store");//.getAttribute("bean");  
-            out.print(store.getStorename());
-            %></tr>
+        <h1>
+            <%  
+                Store store=(Store)request.getSession().getAttribute("store"); 
+                out.print(store.getStorename());
+            %>
+        </h1>
+        <table>    
             <tr>
-                <td align="right">    <input type="submit" value="Items"> </form></td>  
+                <form action="Items" method="post"> <td align="right">    <input type="submit" value="Items"> </form></td>  
             </tr>
         </table>
     </body>

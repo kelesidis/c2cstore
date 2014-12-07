@@ -17,8 +17,9 @@
 </html>
 
 <%  
-User user=(User)request.getAttribute("bean");  
-out.print("Welcome, "+user.getName());  
+            User user=(User)request.getSession().getAttribute("user");//.getAttribute("bean");  
+            out.print("Welcome, "+user.getName());
+            session.setAttribute("user", user);
 %> 
 
  

@@ -1,4 +1,4 @@
-    package controller;  
+    package controller.pseudocontroller;  
     import hibernateDAO.LoginDAO;
 import hibernateDAO.UserPanelDAO;
 import hibernateModel.Storeitems;
@@ -12,45 +12,42 @@ import hibernateModel.Storeitems;
     import javax.servlet.http.HttpServletResponse; 
     //import hibernateUtis.LoginUtil;
     import hibernateModel.User;
-import java.util.ArrayList;
-import java.util.List;
+    import java.util.ArrayList;
+    import java.util.List;
     
-    public class LoginController extends HttpServlet {  
-        @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)  
+    public class PSEUDO_LoginController extends HttpServlet {  
+        
+        public int doPost(String name,String password)  
                 throws ServletException, IOException {  
-            response.setContentType("text/html");  
-            PrintWriter out=response.getWriter();  
               
-            String name=request.getParameter("name");  
-            String password=request.getParameter("password");  
-             
             User ur = new User();
             LoginDAO LU = new LoginDAO();
             LoginUserModel LUM=new LoginUserModel();
+            int value = 0;
             try{
                 ur = LU.getDBUser(name);
                 LUM.setUser(ur);
                 LUM.setPassword(password);
                 String dispaddress = LUM.getRDFoward();
                 RequestDispatcher rd;
-                rd=request.getRequestDispatcher(dispaddress);  
-                request.getSession(true).setAttribute("user", ur);//STARTS A SESSION
                 
                 UserPanelDAO upd = new UserPanelDAO();
                 List<Storeitems> items = null;
                 items =(List<Storeitems>)upd.retrieveItems();
-                
-                request.getSession().setAttribute("randomitems", items);
-                
-                rd.forward(request, response);
+                if(dispaddress.equals("/Pages/Dashboards/UserDashboard.jsp")){
+                    value = 1;
+                }
+                else {
+                    value = 2;
+                }
+               return value;
               
                 
             }
             catch(java.lang.NullPointerException ex){
                 RequestDispatcher rd;
-                rd=request.getRequestDispatcher("/Pages/Login/WrongName.jsp");  
-                rd.forward(request, response);
+                value=3;
+                return value;
             }
  
         }  
