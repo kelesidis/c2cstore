@@ -5,7 +5,7 @@
  */
 package controller;
 
-import hibernateDAO.MailDAO;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ModelMail;
+import model.MailModel;
+import model.SendMailModel;
 
 /**
  *
@@ -39,8 +40,8 @@ public class ContactController extends HttpServlet {
             try
         {
             String mailMessage = request.getParameter("mailMsg");
-            ModelMail mMail = new ModelMail();
-            MailDAO sMail = new MailDAO(mMail);
+            MailModel mMail = new MailModel();
+            SendMailModel sMail = new SendMailModel(mMail);
             sMail.setModelMsg(mailMessage);
             sMail.setModelSubj(request.getParameter("mailSubj"));
             sMail.sendMailTo("chrisnmr72@gmail.com");
