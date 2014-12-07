@@ -5,5 +5,4 @@
 --%>
 
 <p>You have logged out dog</p>  
-<br/>
 <%@ include file="/index.jsp" %> 
