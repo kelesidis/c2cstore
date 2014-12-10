@@ -8,8 +8,8 @@ package dao;
 
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
-import hibernateUtils.RegisterUtil;
 import hibernateModel.User;
+import hibernateUtil.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -25,7 +25,7 @@ public class RegisterDAO implements IHibernateDAO{
     
     @Override
     public void addUser(User user){
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
@@ -45,7 +45,7 @@ public class RegisterDAO implements IHibernateDAO{
     @Override
     public User checkUsername(String username){
         
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
@@ -66,7 +66,7 @@ public class RegisterDAO implements IHibernateDAO{
     @Override
     public User checkEmail(String email){
         
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();;
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();

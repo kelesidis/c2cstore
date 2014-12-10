@@ -8,10 +8,9 @@ package dao;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
-import hibernateUtils.RegisterUtil;
+import hibernateUtil.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,7 +23,7 @@ public class UserPanelDAO implements IHibernateDAO{
     
     @Override
     public List<Storeitems> retrieveItems(){
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         List<Storeitems> item = new ArrayList<Storeitems>();
         try{

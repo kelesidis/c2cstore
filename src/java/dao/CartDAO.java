@@ -8,7 +8,7 @@ package dao;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
-import hibernateUtils.LoginUtil;
+import hibernateUtil.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -23,8 +23,7 @@ public class CartDAO implements IHibernateDAO{
     @Override
     public Storeitems getItem(String id){
         Storeitems item = null;
-        LoginUtil LU = new LoginUtil();
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         item = (Storeitems) session.createQuery ("from Storeitems as storeitems where storeitems.id = '"+id+"'").uniqueResult();    

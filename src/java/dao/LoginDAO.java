@@ -7,8 +7,8 @@ package dao;
 
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
-import hibernateUtils.LoginUtil;
 import hibernateModel.User;
+import hibernateUtil.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,8 +22,7 @@ public class LoginDAO implements IHibernateDAO{
     
     @Override
     public User getDBUser(String ungiven){
-        LoginUtil LU = new LoginUtil();
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         ur =  (User) session.createQuery("from User as user where user.username = '"+ungiven+"'").uniqueResult();
