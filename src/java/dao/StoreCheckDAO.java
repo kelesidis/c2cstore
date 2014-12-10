@@ -15,10 +15,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-/**
- *
- * @author Admin
- */
+
 public class StoreCheckDAO implements IHibernateDAO{
     
     @Override
