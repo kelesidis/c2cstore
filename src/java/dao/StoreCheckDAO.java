@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hibernateDAO;
+package dao;
 
 import hibernateModel.Categories;
 import hibernateModel.Store;
@@ -19,8 +19,9 @@ import org.hibernate.Transaction;
  *
  * @author Admin
  */
-public class StoreCheckDAO {
+public class StoreCheckDAO implements IHibernateDAO{
     
+    @Override
     public Store checkForStore(User user){
         LoginUtil LU = new LoginUtil();
         
@@ -35,7 +36,8 @@ public class StoreCheckDAO {
      
     }
     
-     public boolean checkForStoreName(String storeName){
+    @Override 
+    public boolean checkForStoreName(String storeName){
         LoginUtil LU = new LoginUtil();
         
         Session session = LU.getFactorySession().openSession();
@@ -54,6 +56,7 @@ public class StoreCheckDAO {
      
     }
      
+    @Override
     public Store createStore(String storeName, User ur){
         LoginUtil LU = new LoginUtil();
         
@@ -70,6 +73,7 @@ public class StoreCheckDAO {
         
     }
      
+    @Override
     public List getItems(Store store){
         List<Storeitems> itemList = null;
         LoginUtil LU = new LoginUtil();
@@ -84,6 +88,7 @@ public class StoreCheckDAO {
         return itemList;
     }
     
+    @Override
     public void addItem(String desc,String quantity, Store store, String price, String category){
         LoginUtil LU = new LoginUtil();
         
@@ -108,6 +113,7 @@ public class StoreCheckDAO {
         
     }
     
+    @Override
     public List getCategories(){
         List<Categories> categories = null;
         LoginUtil LU = new LoginUtil();
@@ -120,5 +126,40 @@ public class StoreCheckDAO {
        
 
         return categories;
+    }
+
+    @Override
+    public Storeitems getItem(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List getItems() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User getDBUser(String ungiven) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addUser(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User checkUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User checkEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Storeitems> retrieveItems() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

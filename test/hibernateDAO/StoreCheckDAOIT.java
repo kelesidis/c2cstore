@@ -5,6 +5,7 @@
  */
 package hibernateDAO;
 
+import dao.StoreCheckDAO;
 import hibernateModel.Store;
 import hibernateModel.User;
 import java.util.List;

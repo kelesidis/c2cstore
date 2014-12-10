@@ -5,8 +5,8 @@
  */
 package controller;
 
-import hibernateDAO.CartDAO;
-import hibernateDAO.CatalogueDAO;
+import dao.CartDAO;
+import dao.CatalogueDAO;
 import hibernateModel.Storeitems;
 import java.io.IOException;
 import java.io.PrintWriter;

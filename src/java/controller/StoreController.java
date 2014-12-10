@@ -5,7 +5,7 @@
  */
 package controller;
 
-import hibernateDAO.StoreCheckDAO;
+import dao.StoreCheckDAO;
 import hibernateModel.Categories;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;

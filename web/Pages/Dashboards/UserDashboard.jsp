@@ -29,6 +29,9 @@
                    <td align="center"><form action="aboutFrm" method="post"><input type="submit" value="Contact Us"></form></td>
                </tr>
                <tr>
+                   <td align="center"><form action="Catalogue" method="post"><input type="submit" value="Catalogue"></form></td>
+               </tr>
+               <tr>
                    <td align="center"><form action="Settings" method="post"><input type="submit" value="Settings"></form></td>
                </tr>
                <tr>
