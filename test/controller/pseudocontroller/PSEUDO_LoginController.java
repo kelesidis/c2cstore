@@ -1,6 +1,6 @@
     package controller.pseudocontroller;  
-    import hibernateDAO.LoginDAO;
-import hibernateDAO.UserPanelDAO;
+    import dao.LoginDAO;
+import dao.UserPanelDAO;
 import hibernateModel.Storeitems;
     import model.LoginUserModel;
     import java.io.IOException;  

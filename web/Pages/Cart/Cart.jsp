@@ -51,6 +51,6 @@
 
            %>
         </table>
-        
+        <form action="Checkout" method="post"><input type="submit" value="Checkout"></form>
     </body>
 </html>

@@ -5,6 +5,7 @@
  */
 package hibernateDAO;
 
+import dao.LoginDAO;
 import hibernateModel.User;
 import org.junit.After;
 import org.junit.AfterClass;

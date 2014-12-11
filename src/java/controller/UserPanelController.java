@@ -5,7 +5,7 @@
  */
 package controller;
 
-import hibernateDAO.RegisterDAO;
+import dao.RegisterDAO;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
 import java.io.IOException;

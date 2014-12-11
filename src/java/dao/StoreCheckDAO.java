@@ -3,28 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hibernateDAO;
+package dao;
 
 import hibernateModel.Categories;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
-import hibernateUtils.LoginUtil;
+import hibernateUtil.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-/**
- *
- * @author Admin
- */
-public class StoreCheckDAO {
+
+public class StoreCheckDAO{
+    
     
     public Store checkForStore(User user){
-        LoginUtil LU = new LoginUtil();
-        
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         Store store =  (Store) session.createQuery("from Store as store where store.user = "+"'"+user.getId()+"'").uniqueResult();
@@ -35,10 +31,9 @@ public class StoreCheckDAO {
      
     }
     
-     public boolean checkForStoreName(String storeName){
-        LoginUtil LU = new LoginUtil();
-        
-        Session session = LU.getFactorySession().openSession();
+   
+    public boolean checkForStoreName(String storeName){
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         Store store =  (Store) session.createQuery("from Store as store where store.storename = "+"'"+storeName+"'").uniqueResult();
@@ -54,10 +49,9 @@ public class StoreCheckDAO {
      
     }
      
+    
     public Store createStore(String storeName, User ur){
-        LoginUtil LU = new LoginUtil();
-        
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         Store store = new Store();
@@ -70,10 +64,10 @@ public class StoreCheckDAO {
         
     }
      
+   
     public List getItems(Store store){
         List<Storeitems> itemList = null;
-        LoginUtil LU = new LoginUtil();
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         Query q = session.createQuery ("from Storeitems as storeitems where storeitems.store = " + store.getId() );
@@ -84,10 +78,9 @@ public class StoreCheckDAO {
         return itemList;
     }
     
+   
     public void addItem(String desc,String quantity, Store store, String price, String category){
-        LoginUtil LU = new LoginUtil();
-        
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         
@@ -108,10 +101,10 @@ public class StoreCheckDAO {
         
     }
     
+   
     public List getCategories(){
         List<Categories> categories = null;
-        LoginUtil LU = new LoginUtil();
-        Session session = LU.getFactorySession().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
         Query q = session.createQuery ("from Categories as categories where categories.id > 0"  );
@@ -121,4 +114,5 @@ public class StoreCheckDAO {
 
         return categories;
     }
+
 }

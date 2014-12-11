@@ -5,7 +5,7 @@
  */
 package controller;
 
-import hibernateDAO.CatalogueDAO;
+import dao.CatalogueDAO;
 import hibernateModel.Storeitems;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +32,7 @@ public class CatalogueController extends HttpServlet {
                     CatalogueDAO catalogue = new CatalogueDAO();
                     List<Storeitems> itemList = null;
                     itemList =(List<Storeitems>) catalogue.getItems();
-                    request.getSession(true).setAttribute("catalogueitemlist", itemList);
+                    request.getSession().setAttribute("catalogueitemlist", itemList);
                     rd=request.getRequestDispatcher("/Pages/Catalogue/Catalogue.jsp");  
                     rd.forward(request, response);
             }

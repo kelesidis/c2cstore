@@ -1,35 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 30, 2014 2:43:50 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 10, 2014 9:23:42 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="user_store_db" name="hibernateModel.Storeitems" optimistic-lock="version" table="storeitems">
-    <id name="id" type="java.lang.Integer">
-      <column name="ID"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="hibernateModel.Categories" fetch="select" name="categories">
-      <column name="Category" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="hibernateModel.Store" fetch="select" name="store">
-      <column name="StoreID" not-null="true"/>
-    </many-to-one>
-    <property name="price" type="string">
-      <column length="45" name="Price" not-null="true"/>
-    </property>
-    <property name="description" type="string">
-      <column length="45" name="Description" not-null="true"/>
-    </property>
-    <property name="photo1" type="string">
-      <column length="100" name="Photo1" not-null="true"/>
-    </property>
-    <property name="photo2" type="string">
-      <column length="100" name="Photo2" not-null="true"/>
-    </property>
-    <property name="photo3" type="string">
-      <column length="100" name="Photo3" not-null="true"/>
-    </property>
-    <property name="quantity" type="int">
-      <column name="Quantity" not-null="true"/>
-    </property>
-  </class>
+    <class name="hibernateModel.Storeitems" table="storeitems" catalog="user_store_db" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categories" class="hibernateModel.Categories" fetch="select">
+            <column name="Category" not-null="true" />
+        </many-to-one>
+        <many-to-one name="store" class="hibernateModel.Store" fetch="select">
+            <column name="StoreID" not-null="true" />
+        </many-to-one>
+        <property name="price" type="string">
+            <column name="Price" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="45" not-null="true" />
+        </property>
+        <property name="photo1" type="string">
+            <column name="Photo1" length="100" not-null="true" />
+        </property>
+        <property name="photo2" type="string">
+            <column name="Photo2" length="100" not-null="true" />
+        </property>
+        <property name="photo3" type="string">
+            <column name="Photo3" length="100" not-null="true" />
+        </property>
+        <property name="quantity" type="int">
+            <column name="Quantity" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

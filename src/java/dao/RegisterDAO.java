@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hibernateDAO;
+package dao;
 
 
+import hibernateModel.Store;
 import hibernateModel.Storeitems;
-import hibernateUtils.RegisterUtil;
 import hibernateModel.User;
+import hibernateUtil.HibernateUtil;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,12 +19,13 @@ import org.hibernate.Transaction;
  *
  * @author Chris
  */
-public class RegisterDAO {
+public class RegisterDAO{
     
     User query = new User();
     
+    
     public void addUser(User user){
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
@@ -39,9 +42,10 @@ public class RegisterDAO {
         }
     }
     
+    
     public User checkUsername(String username){
         
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
@@ -59,9 +63,10 @@ public class RegisterDAO {
         return query;
     }
     
+    
     public User checkEmail(String email){
         
-        Session session = RegisterUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();;
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
@@ -78,5 +83,9 @@ public class RegisterDAO {
         }
         return query;
     }
+
+    
+
+    
     
 }
