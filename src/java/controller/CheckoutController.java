@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.CheckoutDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Chris
  */
-@WebServlet(name = "CheckoutController", urlPatterns = {"/Checkout", "/CompleteOrder", "/AnotherAddress"})
+@WebServlet(name = "CheckoutController", urlPatterns = {"/Checkout", "/CompleteOrderNotLoggedIn", "/AnotherAddress", "/CompleteOrderLogedIn"})
 public class CheckoutController extends HttpServlet {
 
     @Override
@@ -27,10 +28,10 @@ public class CheckoutController extends HttpServlet {
         response.setContentType("text/html");
 
         String userPath = request.getServletPath();
-        
+
         HttpSession session = request.getSession(false);
-        
-        if(userPath.equals("/Checkout")){
+
+        if (userPath.equals("/Checkout")) {
             if (session.getAttribute("user") == null) {
                 // User is not logged in.  
                 RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/NotLoggedIn.jsp");
@@ -40,13 +41,18 @@ public class CheckoutController extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/LoggedIn.jsp");
                 rd.forward(request, response);
             }
-        }
-        else if(userPath.equals("/AnotherAddress")){
+        } else if (userPath.equals("/AnotherAddress")) {
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/NotLoggedIn.jsp");
             rd.forward(request, response);
-        }
-        else{
-            //TODO: CompleteOrder, save to database in order table the details of checkout.
+        } else if (userPath.endsWith("/CompleteOrderLoggedIn")) {
+            //TODO: add to db the order
+            
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/OrderComplete.jsp");
+            rd.forward(request, response);
+        } else if (userPath.equals("/CompleteOrderNotLoggedIn")) {
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/OrderComplete.jsp");
+            rd.forward(request, response);
+
         }
 
     }

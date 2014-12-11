@@ -5,7 +5,7 @@
  */
 package dao;
 
-
+import hibernateModel.Orders;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
@@ -19,17 +19,15 @@ import org.hibernate.Transaction;
  *
  * @author Chris
  */
-public class RegisterDAO{
+public class CheckoutDAO{
+
     
-    User query = new User();
-    
-    
-    public void addUser(User user){
+    public void addOrder(Orders order){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
-            session.save(user);
+            session.save(order);
             transaction.commit();
             
             
@@ -42,14 +40,12 @@ public class RegisterDAO{
         }
     }
     
-    
-    public User checkUsername(String username){
-        
+    public void updateItem(Storeitems item){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
-            query = (User) session.createQuery("from User as user where user.username = '"+username+"'").uniqueResult();
+            session.save(item);
             transaction.commit();
             
             
@@ -60,32 +56,7 @@ public class RegisterDAO{
         finally {
         session.close();
         }
-        return query;
     }
-    
-    
-    public User checkEmail(String email){
-        
-        Session session = HibernateUtil.getSessionFactory().openSession();;
-        Transaction transaction = null;
-        try{
-            transaction = session.beginTransaction();
-            query = (User) session.createQuery("from User as user where user.email = '"+email+"'").uniqueResult();
-            transaction.commit();
-            
-            
-        }catch (HibernateException e) {
-            transaction.rollback();
-            e.printStackTrace();
-        }
-        finally {
-        session.close();
-        }
-        return query;
-    }
-
-    
-
     
     
 }

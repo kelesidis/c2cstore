@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action ="CompleteOrder" method="post">
+        <form action ="CompleteOrderLoggedIn" method="post">
             <table>
                 <tr>
                     <td>Name:</td>
@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>Surname</td>
-                    <td><input type="text" name="name" required></td>
+                    <td><input type="text" name="surname" required></td>
                 </tr>
                 <tr>
                     <td>Country:</td>
