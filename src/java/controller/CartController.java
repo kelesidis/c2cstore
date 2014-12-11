@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.CartItemModel;
 /**
  *
  * @author Admin
@@ -36,7 +36,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
                     
                         CartDAO itemDB = new CartDAO();
                         Storeitems item = itemDB.getItem(request.getParameter("itemid"));
-                        List<Storeitems> cartlist = (List<Storeitems>)request.getSession().getAttribute("cartlist");
+                        int quan = Integer.parseInt(request.getParameter("quantity"));
+                        List<CartItemModel> cartlist = (List<CartItemModel>)request.getSession().getAttribute("cartlist");
                         
                        
 //                out.println("<!DOCTYPE html>");
@@ -49,9 +50,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 //                out.println("</body>");
 //                out.println("</html>");
                         if(cartlist==null){
-                            cartlist = new ArrayList<Storeitems>();
+                            cartlist = new ArrayList<CartItemModel>();
                         }
-                        cartlist.add(item);
+                        CartItemModel newItem = new CartItemModel(item, quan);
+                        cartlist.add(newItem);
                         request.getSession().setAttribute("cartlist", cartlist);
                         rd=request.getRequestDispatcher("/Pages/Catalogue/Catalogue.jsp");
                         rd.forward(request, response);

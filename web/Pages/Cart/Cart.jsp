@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="model.CartItemModel"%>
 <%@page import="java.util.List"%>
 <%@page import="hibernateModel.Storeitems"%>
 <%@page import="hibernateModel.Store"%>
@@ -21,8 +22,8 @@
        </h1>
        <table style="border: 4px blue ridge">
             <%  
-               List<Storeitems> si = null;
-               si=(List<Storeitems>)request.getSession().getAttribute("cartlist");//.getAttribute("bean");
+               List<CartItemModel> si = null;
+               si=(List<CartItemModel>)request.getSession().getAttribute("cartlist");//.getAttribute("bean");
                out.print("Item List : </br>");
                if(si!=null){
                     for(int i = 0; i<si.size();i++){
@@ -30,20 +31,23 @@
                         out.print("<tr style=\"border: 2px black ridge\">");
 
                          out.print("<td style=\"border:  2px black ridge\">ItemID : </td>");
-                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getId()+ "</td>");
+                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getSi().getId()+ "</td>");
 
                          out.print("<td style=\"border:  2px black ridge\">Description : </td>");
-                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getDescription()+ "</td>");
+                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getSi().getDescription()+ "</td>");
 
                          out.print("<td style=\"border:  2px black ridge\">Price : </td>");
-                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getPrice()+ " $</td>");
+                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getSi().getPrice()+ " $</td>");
 
-                         out.print("<td style=\"border:  2px black ridge\">Quantity : </td>");
-                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getQuantity()+ "</td>");
+                         out.print("<td style=\"border:  2px black ridge\">Store Quantity : </td>");
+                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getSi().getQuantity()+ "</td>");
                          
                          out.print("<td style=\"border:  2px black ridge\">Categorie : </td>");
-                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getCategories().getCategoriename()+ "</td>");
+                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getSi().getCategories().getCategoriename()+ "</td>");
  
+                         out.print("<td style=\"border:  2px black ridge\">Order Quantity : </td>");
+                         out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getQua()+ "</td>");
+                         
                         out.print("</tr>");
                     }
                }
