@@ -17,8 +17,8 @@
         <property name="quantity" type="int">
             <column name="quantity" not-null="true" />
         </property>
-        <property name="userId" type="int">
-            <column name="userID" not-null="true" />
+        <property name="storeId" type="int">
+            <column name="storeID" not-null="true" />
         </property>
         <property name="delivered" type="boolean">
             <column name="delivered" not-null="true" />

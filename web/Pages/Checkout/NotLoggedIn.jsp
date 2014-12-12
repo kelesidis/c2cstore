@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action ="CompleteOrderLoggedIn" method="post">
+        <form action ="CompleteOrder" method="post">
             <table>
                 <tr>
                     <td>Name:</td>

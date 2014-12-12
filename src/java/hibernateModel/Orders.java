@@ -13,7 +13,7 @@ public class Orders  implements java.io.Serializable {
      private int orderCode;
      private int itemId;
      private int quantity;
-     private int userId;
+     private int storeId;
      private boolean delivered;
 
     public Orders() {
@@ -23,7 +23,7 @@ public class Orders  implements java.io.Serializable {
        this.orderCode = orderCode;
        this.itemId = itemId;
        this.quantity = quantity;
-       this.userId = userId;
+       this.storeId = userId;
        this.delivered = delivered;
     }
    
@@ -55,12 +55,12 @@ public class Orders  implements java.io.Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public int getUserId() {
-        return this.userId;
+    public int getStoreId() {
+        return this.storeId;
     }
     
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
     }
     public boolean isDelivered() {
         return this.delivered;
