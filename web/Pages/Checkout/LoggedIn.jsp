@@ -14,7 +14,7 @@
     <body>
         <p>Send items to your address, 
            or you wish them to delivered to another address?</p>
-        <form action="CompleteOrderLogedIn" method="post"><input type="submit" value="To my address"></form>
+        <form action="CompleteOrder" method="post"><input type="submit" value="To my address"></form>
         <form action="AnotherAddress" method="post"><input type="submit" value="To another address"></form>
     </body>
 </html>

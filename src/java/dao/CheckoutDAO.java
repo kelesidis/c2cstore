@@ -6,12 +6,10 @@
 package dao;
 
 import hibernateModel.Orders;
-import hibernateModel.Store;
 import hibernateModel.Storeitems;
-import hibernateModel.User;
 import hibernateUtil.HibernateUtil;
-import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -40,13 +38,16 @@ public class CheckoutDAO{
         }
     }
     
-    public void updateItem(Storeitems item){
+    public void updateItem(int itemID, int qua){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
-            transaction = session.beginTransaction();
-            session.save(item);
-            transaction.commit();
+            session.getTransaction().begin();
+            Query query = session.createSQLQuery("update Storeitems set Quantity = :qua" + " where Id = :itemID");
+            query.setParameter("qua", qua);
+            query.setParameter("itemID", itemID);
+            int result = query.executeUpdate();
+            session.getTransaction().commit();
             
             
         }catch (HibernateException e) {
@@ -56,6 +57,16 @@ public class CheckoutDAO{
         finally {
         session.close();
         }
+    }
+    
+    public Storeitems getItem(int id){
+        Storeitems item = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        item = (Storeitems) session.createQuery ("from Storeitems as storeitems where storeitems.id = '"+id+"'").uniqueResult();    
+
+        return item;
     }
     
     
