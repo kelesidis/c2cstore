@@ -1,5 +1,5 @@
 package hibernateModel;
-// Generated Dec 10, 2014 9:23:37 PM by Hibernate Tools 4.3.1
+// Generated Dec 16, 2014 10:47:05 PM by Hibernate Tools 4.3.1
 
 
 
@@ -15,16 +15,18 @@ public class Orders  implements java.io.Serializable {
      private int quantity;
      private int storeId;
      private boolean delivered;
+     private int userId;
 
     public Orders() {
     }
 
-    public Orders(int orderCode, int itemId, int quantity, int userId, boolean delivered) {
+    public Orders(int orderCode, int itemId, int quantity, int storeId, boolean delivered, int userId) {
        this.orderCode = orderCode;
        this.itemId = itemId;
        this.quantity = quantity;
-       this.storeId = userId;
+       this.storeId = storeId;
        this.delivered = delivered;
+       this.userId = userId;
     }
    
     public Integer getId() {
@@ -68,6 +70,13 @@ public class Orders  implements java.io.Serializable {
     
     public void setDelivered(boolean delivered) {
         this.delivered = delivered;
+    }
+    public int getUserId() {
+        return this.userId;
+    }
+    
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 
