@@ -8,6 +8,7 @@ package controller;
 import dao.CheckoutDAO;
 import hibernateModel.Orders;
 import hibernateModel.Storeitems;
+import hibernateModel.User;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
@@ -24,7 +25,7 @@ import model.CartItemModel;
  *
  * @author Chris
  */
-@WebServlet(name = "CheckoutController", urlPatterns = {"/Checkout", "/CompleteOrder", "/AnotherAddress", "/Homepage"})
+@WebServlet(name = "CheckoutController", urlPatterns = {"/Checkout", "/CompleteOrder", "/AnotherAddress", "/Homepage","/Indexx"})
 public class CheckoutController extends HttpServlet {
 
     @Override
@@ -70,18 +71,33 @@ public class CheckoutController extends HttpServlet {
                 order.setItemId(itemList.get(i).getSi().getId());
                 order.setStoreId(itemList.get(i).getSi().getStore().getId());
                 order.setDelivered(false);
+                User user = (User) request.getSession().getAttribute("user");
+                if(session.getAttribute("user") == null){
+                    order.setUserId(0);
+                }
+                else{
+                    order.setUserId(user.getId());
+                }
                 cd.addOrder(order);//order done
 
             }
 
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/OrderComplete.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/Checkout/CompleteOrder.jsp");
             rd.forward(request, response);
         }
-        else{
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/Dashboards/UserDashboard.jsp");
+        else if(userPath.equals("/Homepage")){
+            if (session.getAttribute("user") == null) {
+                // User is not logged in.  
+                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
+            } else {
+                // User IS logged in.  
+                RequestDispatcher rd = request.getRequestDispatcher("/Pages/Dashboards/UserDashboard.jsp");
+                rd.forward(request, response);
+            }
+            
+            
         }
-
     }
 
     @Override

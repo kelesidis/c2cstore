@@ -49,6 +49,9 @@
             else if(user.getRank().equals("moderator")){
                 return "/Pages/Dashboards/ModeratorDashboard.jsp";
             }
+            else if(user.getRank().equals("courier")){
+                return "/Pages/ACS/Courier.jsp";
+            }
             else{
                 return "/Pages/Dashboards/SuperUserDashboard.jsp";
             }

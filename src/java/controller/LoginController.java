@@ -1,6 +1,8 @@
     package controller;  
+import dao.CourierDAO;
     import dao.LoginDAO;
 import dao.UserPanelDAO;
+import hibernateModel.Orders;
 import hibernateModel.Storeitems;
     import model.LoginUserModel;
     import java.io.IOException;  
@@ -12,7 +14,6 @@ import hibernateModel.Storeitems;
     import javax.servlet.http.HttpServletResponse; 
     //import hibernateUtis.LoginUtil;
     import hibernateModel.User;
-import java.util.ArrayList;
 import java.util.List;
     
     public class LoginController extends HttpServlet {  
@@ -40,12 +41,14 @@ import java.util.List;
                 UserPanelDAO upd = new UserPanelDAO();
                 List<Storeitems> items = null;
                 items =(List<Storeitems>)upd.retrieveItems();
-                
                 request.getSession().setAttribute("randomitems", items);
+                CourierDAO cd= new CourierDAO();
+                List<Orders> orders = null;
+                orders = (List<Orders>)cd.retrieveOrders();
+                request.getSession().setAttribute("allOrders", orders);
                 
                 rd.forward(request, response);
               
-                
             }
             catch(java.lang.NullPointerException ex){
                 RequestDispatcher rd;
