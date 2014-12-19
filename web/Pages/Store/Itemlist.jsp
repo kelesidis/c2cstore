@@ -47,14 +47,20 @@
                          
                          out.print("<td style=\"border: 4px blue ridge\">Categorie : </td>");
                          out.print("<td style=\"border: 4px green inset\">"+si.get(i).getCategories().getCategoriename()+ "</td>");
-
+                         
+                         out.print("<td style=\"border:  2px black ridge\"><form action=\"EditItem\" method=\"post\"><input type=\"hidden\" value="+i+" name=\"itemlistid\" /> <input type=\"submit\" value=\"Edit\"></form></td>");
+                         
                         out.print("</tr>");
                     }
                }
                
 
            %>
+           <tr>
+               <td><form action="AddItemConf" method="post"> <input type="submit" value="Add item"></td>
+               
+           </tr>
         </table>
-        <form action="AddItemConf" method="post"> <input type="submit" value="Add item">
+        
     </body>
 </html>

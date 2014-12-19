@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem"})
+@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem","/EditItem","/UpdateItem"})
 public class StoreController extends HttpServlet {
 
     @Override
@@ -126,7 +126,21 @@ public class StoreController extends HttpServlet {
 //                out.println("</html>");
             
  
+            }
+            else if(URL.equals("/EditItem")){
+
+                request.getSession().setAttribute("itemlistiteration", request.getParameter("itemlistid"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/EditItem.jsp");
+                rd.forward(request, response);
             } 
+            else if(URL.equals("/UpdateItem")){
+                StoreCheckDAO SC = new StoreCheckDAO();
+                SC.updateItem((String)request.getParameter("upitemid"), (String)request.getParameter("newPrice"), (String)request.getParameter("newDesc"), (String)request.getParameter("newQuan"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+            }
 
     }
 
