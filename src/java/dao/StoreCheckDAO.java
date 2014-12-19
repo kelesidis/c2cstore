@@ -144,6 +144,36 @@ public class StoreCheckDAO{
         finally {
         session.close();
         }
+        }    
+        public void delItem(String id){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+   
+
+                
+//        String hql = "update Storeitems set Price = "+price+", Description = '"+desc+"', Quantity = '"+quan+"' where ID = '"+id+"'";
+//        Query query = session.createQuery(hql);
+//        int result = query.executeUpdate();
+//        String hql2 = "UPDATE Storeitems set Description = "+desc+" WHERE ID = '"+id+"'";
+//        Query query2 = session.createQuery(hql2);
+//        int result2 = query.executeUpdate();
+//        String hql3 = "UPDATE Storeitems set Quantity = "+quan+" WHERE ID = '"+id+"'";
+//        Query query3 = session.createQuery(hql3);
+//        int result3 = query.executeUpdate();
+//        session.getTransaction().commit();
+        
+        try{
+            session.getTransaction().begin();
+            Query query = session.createSQLQuery("delete from Storeitems  where ID = '"+id+"'");
+            int result = query.executeUpdate();
+            session.getTransaction().commit();  
+        }catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
 
 
     }
