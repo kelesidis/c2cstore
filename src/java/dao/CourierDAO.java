@@ -61,7 +61,6 @@ public class CourierDAO {
     
     public void updateOrder(int ordcode, boolean delivered){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
         try{
             session.getTransaction().begin();
             Query query = session.createSQLQuery("update Orders set delivered = :delivered" + " where OrderCode = :ordercode");
@@ -72,7 +71,7 @@ public class CourierDAO {
             
             
         }catch (HibernateException e) {
-            transaction.rollback();
+            session.getTransaction().rollback();
             e.printStackTrace();
         }
         finally {

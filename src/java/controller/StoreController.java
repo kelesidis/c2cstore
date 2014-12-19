@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem","/EditItem","/UpdateItem"})
+@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem","/EditItem","/UpdateItem","/RemoveItemQ","/RemoveItem","/CancelRemove"})
 public class StoreController extends HttpServlet {
 
     @Override
@@ -141,6 +141,26 @@ public class StoreController extends HttpServlet {
                 rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
                 rd.forward(request, response);
             }
+            
+            else if(URL.equals("/RemoveItemQ")){
+                request.getSession().setAttribute("itemlistiteration", request.getParameter("idforemitem"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/RemoveItemQuestion.jsp");
+                rd.forward(request, response);
+            }
+             else if(URL.equals("/RemoveItem")){
+                StoreCheckDAO SC = new StoreCheckDAO();
+                SC.delItem((String)request.getParameter("remitemid"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+            }
+              else if(URL.equals("/CancelRemove")){
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+            }
+            
 
     }
 
