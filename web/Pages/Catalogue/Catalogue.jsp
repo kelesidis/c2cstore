@@ -59,6 +59,7 @@
                          out.print("<td style=\"border:  2px black ridge\"><form action=\"Additem\" method=\"post\"><input type=\"text\" name=\"quantity\"></td>");
                          
                          out.print("<td style=\"border:  2px black ridge\"> <input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"Add\"></form></td>");
+                         out.print("<td style=\"border:  2px black ridge\"><form action=\"Viewitem\" method=\"post\"> <input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"View\"></form></td>");
                          
                         out.print("</tr>");
                     }
