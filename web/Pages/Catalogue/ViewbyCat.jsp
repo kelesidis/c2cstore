@@ -33,7 +33,7 @@
        <table style="border: 4px blue ridge">
             <%  
                List<Storeitems> si = null;
-               si=(List<Storeitems>)request.getSession().getAttribute("catalogueitemlist");//.getAttribute("bean");
+               si=(List<Storeitems>)request.getSession().getAttribute("catlistitems");//.getAttribute("bean");
                out.print("Item List : </br>");
                if(si!=null){
                     for(int i = 0; i<si.size();i++){

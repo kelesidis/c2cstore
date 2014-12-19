@@ -9,6 +9,7 @@ import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
 import hibernateUtil.HibernateUtil;
+import static java.lang.System.out;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -27,9 +28,20 @@ public class CatalogueDAO{
         Transaction tx = null;
         tx = session.beginTransaction();
         Query q = session.createQuery ("from Storeitems as storeitems where storeitems.id > 0"  );
-        itemList = (List<Storeitems>) q.list();
+        //itemList = (List<Storeitems>) q.list();
         itemList =  q.list();
        
+
+        return itemList;
+    }
+    
+    public List getItemsbyCat(String cid){
+        List<Storeitems> itemList = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        Query q = session.createQuery ("from Storeitems as storeitems where storeitems.categories = '"+cid+"'"  );
+        itemList =  q.list();
 
         return itemList;
     }
