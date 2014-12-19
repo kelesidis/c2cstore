@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="hibernateModel.Categories"%>
 <%@page import="java.util.List"%>
 <%@page import="hibernateModel.Storeitems"%>
 <%@page import="hibernateModel.Store"%>
@@ -19,6 +20,16 @@
          <h1>
 
        </h1>
+         <% 
+             
+           List<Categories> cats = (List<Categories>)request.getSession().getAttribute("categories");
+           for(int i = 0 ; i<cats.size();i++){
+           
+               out.print("<form action=\"Showcat\" method=\"post\"><input type=\"hidden\" value="+cats.get(i).getId()+" name=\"catid\" /> <input type=\"submit\" value="+cats.get(i).getCategoriename()+"></form>");
+           
+           }
+         
+         %>
        <table style="border: 4px blue ridge">
             <%  
                List<Storeitems> si = null;
