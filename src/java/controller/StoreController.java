@@ -167,7 +167,7 @@ public class StoreController extends HttpServlet {
                 StoreCheckDAO SC = new StoreCheckDAO();
                 Store store =(Store)request.getSession().getAttribute("store");
                 List<Orders> sales = new ArrayList<Orders>();
-                sales =(List<Orders>) SC.getStoreSales(store.getId());
+                try{sales =(List<Orders>) SC.getStoreSales(store.getId());
                 List<Storeitems> items= new ArrayList<Storeitems>();
                 
                 for(int i = 0;i<sales.size();i++){
@@ -175,6 +175,8 @@ public class StoreController extends HttpServlet {
                     items.add(si);
                     request.getSession().setAttribute("itemssoldinthestore", items);
                 }
+                }catch(java.lang.IndexOutOfBoundsException ex){}
+                
                    
                 rd=request.getRequestDispatcher("/Pages/Store/Sales.jsp");
                 rd.forward(request, response);
