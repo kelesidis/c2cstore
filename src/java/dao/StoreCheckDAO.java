@@ -6,10 +6,13 @@
 package dao;
 
 import hibernateModel.Categories;
+import hibernateModel.Orders;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
 import hibernateUtil.HibernateUtil;
+import static java.lang.System.out;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -176,6 +179,38 @@ public class StoreCheckDAO{
         }
 
 
+    }
+        
+    public List<Orders> getStoreSales(int storeid){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Orders> sales = new ArrayList<Orders>();
+        try{
+            transaction = session.beginTransaction();
+            sales = (List<Orders>) session.createQuery ("from Orders as orders where orders.storeId = '"+storeid+"' ").list();
+            transaction.commit();
+            
+        }catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        out.print("PRINEW#!@@!!DSFE!!!!!"+sales.get(0).getStoreId());
+        return sales;
+    }
+    
+        public Storeitems getItem(int itemid){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        Query q = session.createQuery ("from Storeitems as storeitems where storeitems.id = '" + itemid+"'" );
+        Storeitems item = (Storeitems) q.uniqueResult();
+        out.print("EROREOREOEROEEOROERORE DESC: "+item.getDescription());
+
+        return item;
     }
 
 }

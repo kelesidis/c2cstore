@@ -23,6 +23,9 @@
             <tr>
                 <form action="Items" method="post"> <td align="right">    <input type="submit" value="Items"> </form></td>  
             </tr>
+            <tr>
+                <form action="Sales" method="post"> <td align="right">    <input type="submit" value="Sales"> </form></td>  
+            </tr>
         </table>
     </body>
 </html>
