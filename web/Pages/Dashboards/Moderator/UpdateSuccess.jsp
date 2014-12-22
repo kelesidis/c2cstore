@@ -1,12 +1,13 @@
-<!DOCTYPE html>
 <%@include file="/Pages/Dashboards/ModeratorDashboard.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>MODERATOR</title>
     </head>
     <body>
-        <h3>Category created</h3>
-        <h2><i>Category created</i></h2>
+        <h1><i>Update success!</i></h1>
+      
     </body>
 </html>
