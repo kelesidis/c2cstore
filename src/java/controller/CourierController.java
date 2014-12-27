@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CourierModel;
+
 
 /**
  *
@@ -29,7 +29,6 @@ public class CourierController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
 
-        CourierModel cm = new CourierModel();
         CourierDAO cd = new CourierDAO();
         String userPath = request.getServletPath();
 

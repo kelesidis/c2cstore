@@ -5,6 +5,7 @@
  */
 package controller;
 
+import controller.pseudocontroller.PSEUDO_CourierController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.After;
@@ -18,9 +19,9 @@ import static org.junit.Assert.*;
  *
  * @author Chris
  */
-public class LogoutControllerTest {
+public class CourierControllerTest {
     
-    public LogoutControllerTest() {
+    public CourierControllerTest() {
     }
     
     @BeforeClass
@@ -40,15 +41,25 @@ public class LogoutControllerTest {
     }
 
     /**
-     * Test of doPost method, of class LogoutController.
+     * Search orders.
      */
     @Test
-    public void testDoPost() throws Exception {
-        PSEUDO_LogoutController instance = new PSEUDO_LogoutController();
-        int result = instance.doPost("Logout");
+    public void testDoPost1() throws Exception {
+        PSEUDO_CourierController instance = new PSEUDO_CourierController();
+        int result = instance.doPost("/SearchOrders");
         int expResult = 1;
         assertEquals(expResult, result);
-        
     }
 
+    /**
+     * close orders.
+     */
+    @Test
+    public void testDoPost2() throws Exception {
+        PSEUDO_CourierController instance = new PSEUDO_CourierController();
+        int result = instance.doPost("/CloseOrder");
+        int expResult = 2;
+        assertEquals(expResult, result);
+    }
+    
 }
