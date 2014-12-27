@@ -29,6 +29,15 @@
                 <td> <form action="passrecover" method="post"> <input type="submit" value="Forgot Password?"> </form> </td>
             </tr>
         </table>
+        <DIV ALIGN="CENTER">
+            <FORM ACTION="Search" METHOD="POST">
+                <TABLE>
+                    <TR>
+                        <TD><INPUT TYPE="TEXT" NAME="searchKey" PLACEHOLDER="3 Chars Minimum"/><INPUT TYPE="SUBMIT" VALUE="Search" NAME="searchBtn"/></TD>
+                    </TR>
+                </TABLE>
+            </FORM>
+        </DIV>
     </body>
     
     

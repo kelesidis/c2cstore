@@ -16,7 +16,7 @@
        %> 
        <br />
        <form action="Search" method="POST">
-           Search by Item<input type="text" name="searchtext">
+           Search by Item<input type="text" name="searchKey" placeholder="3 Chars Minimum" />
            <input type="submit" value="Go">
        </form>
        <br /><br/>
