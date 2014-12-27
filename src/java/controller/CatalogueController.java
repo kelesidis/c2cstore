@@ -6,6 +6,8 @@
 package controller;
 
 import dao.CatalogueDAO;
+import dao.StoreCheckDAO;
+import hibernateModel.Categories;
 import hibernateModel.Storeitems;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Catalogue", urlPatterns = {"/Catalogue"})
+@WebServlet(name = "Catalogue", urlPatterns = {"/Catalogue","/Showcat"})
 public class CatalogueController extends HttpServlet {
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response)  
@@ -29,12 +31,31 @@ public class CatalogueController extends HttpServlet {
                     response.setContentType("text/html");  
                     PrintWriter out=response.getWriter();  
                     RequestDispatcher rd;
-                    CatalogueDAO catalogue = new CatalogueDAO();
-                    List<Storeitems> itemList = null;
-                    itemList =(List<Storeitems>) catalogue.getItems();
-                    request.getSession().setAttribute("catalogueitemlist", itemList);
-                    rd=request.getRequestDispatcher("/Pages/Catalogue/Catalogue.jsp");  
-                    rd.forward(request, response);
+                    String URL = request.getServletPath();
+                    
+                    if(URL.equals("/Catalogue")){
+                        
+                        CatalogueDAO catalogue = new CatalogueDAO();
+                        List<Storeitems> itemList = null;
+                        itemList =(List<Storeitems>) catalogue.getItems();
+                        StoreCheckDAO SC = new StoreCheckDAO();
+                        List<Categories> categories = null;
+                        categories = (List<Categories>)SC.getCategories();
+                        request.getSession().setAttribute("categories", categories);
+                        request.getSession().setAttribute("catalogueitemlist", itemList);
+                        rd=request.getRequestDispatcher("/Pages/Catalogue/Catalogue.jsp");  
+                        rd.forward(request, response);
+                        
+                    }
+                    else if(URL.equals("/Showcat")){
+                    
+                        CatalogueDAO cd = new CatalogueDAO();
+                        List<Storeitems> catlist = (List<Storeitems>)cd.getItemsbyCat(request.getParameter("catid"));
+                        request.getSession().setAttribute("catlistitems", catlist);
+                        rd=request.getRequestDispatcher("/Pages/Catalogue/ViewbyCat.jsp");  
+                        rd.forward(request, response);
+                        
+                    }
             }
  
              

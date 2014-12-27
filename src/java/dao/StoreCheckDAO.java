@@ -6,11 +6,15 @@
 package dao;
 
 import hibernateModel.Categories;
+import hibernateModel.Orders;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
 import hibernateUtil.HibernateUtil;
+import static java.lang.System.out;
+import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -113,6 +117,100 @@ public class StoreCheckDAO{
        
 
         return categories;
+    }
+        public void updateItem(String id, String price, String desc, String quan){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+   
+
+                
+//        String hql = "update Storeitems set Price = "+price+", Description = '"+desc+"', Quantity = '"+quan+"' where ID = '"+id+"'";
+//        Query query = session.createQuery(hql);
+//        int result = query.executeUpdate();
+//        String hql2 = "UPDATE Storeitems set Description = "+desc+" WHERE ID = '"+id+"'";
+//        Query query2 = session.createQuery(hql2);
+//        int result2 = query.executeUpdate();
+//        String hql3 = "UPDATE Storeitems set Quantity = "+quan+" WHERE ID = '"+id+"'";
+//        Query query3 = session.createQuery(hql3);
+//        int result3 = query.executeUpdate();
+//        session.getTransaction().commit();
+        
+        try{
+            session.getTransaction().begin();
+            Query query = session.createSQLQuery("update Storeitems set Price = "+price+", Description = '"+desc+"', Quantity = '"+quan+"' where ID = '"+id+"'");
+            int result = query.executeUpdate();
+            session.getTransaction().commit();  
+        }catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        }    
+        public void delItem(String id){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+   
+
+                
+//        String hql = "update Storeitems set Price = "+price+", Description = '"+desc+"', Quantity = '"+quan+"' where ID = '"+id+"'";
+//        Query query = session.createQuery(hql);
+//        int result = query.executeUpdate();
+//        String hql2 = "UPDATE Storeitems set Description = "+desc+" WHERE ID = '"+id+"'";
+//        Query query2 = session.createQuery(hql2);
+//        int result2 = query.executeUpdate();
+//        String hql3 = "UPDATE Storeitems set Quantity = "+quan+" WHERE ID = '"+id+"'";
+//        Query query3 = session.createQuery(hql3);
+//        int result3 = query.executeUpdate();
+//        session.getTransaction().commit();
+        
+        try{
+            session.getTransaction().begin();
+            Query query = session.createSQLQuery("delete from Storeitems  where ID = '"+id+"'");
+            int result = query.executeUpdate();
+            session.getTransaction().commit();  
+        }catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+
+
+    }
+        
+    public List<Orders> getStoreSales(int storeid){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        List<Orders> sales = new ArrayList<Orders>();
+        try{
+            transaction = session.beginTransaction();
+            sales = (List<Orders>) session.createQuery ("from Orders as orders where orders.storeId = '"+storeid+"' ").list();
+            transaction.commit();
+            
+        }catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        }
+        finally {
+        session.close();
+        }
+        out.print("PRINEW#!@@!!DSFE!!!!!"+sales.get(0).getStoreId());
+        return sales;
+    }
+    
+        public Storeitems getItem(int itemid){
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        Query q = session.createQuery ("from Storeitems as storeitems where storeitems.id = '" + itemid+"'" );
+        Storeitems item = (Storeitems) q.uniqueResult();
+        out.print("EROREOREOEROEEOROERORE DESC: "+item.getDescription());
+
+        return item;
     }
 
 }

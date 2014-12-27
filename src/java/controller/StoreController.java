@@ -7,11 +7,13 @@ package controller;
 
 import dao.StoreCheckDAO;
 import hibernateModel.Categories;
+import hibernateModel.Orders;
 import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem"})
+@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem","/EditItem","/UpdateItem","/RemoveItemQ","/RemoveItem","/CancelRemove","/Sales"})
 public class StoreController extends HttpServlet {
 
     @Override
@@ -126,7 +128,60 @@ public class StoreController extends HttpServlet {
 //                out.println("</html>");
             
  
+            }
+            else if(URL.equals("/EditItem")){
+
+                request.getSession().setAttribute("itemlistiteration", request.getParameter("itemlistid"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/EditItem.jsp");
+                rd.forward(request, response);
             } 
+            else if(URL.equals("/UpdateItem")){
+                StoreCheckDAO SC = new StoreCheckDAO();
+                SC.updateItem((String)request.getParameter("upitemid"), (String)request.getParameter("newPrice"), (String)request.getParameter("newDesc"), (String)request.getParameter("newQuan"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+            }
+            
+            else if(URL.equals("/RemoveItemQ")){
+                request.getSession().setAttribute("itemlistiteration", request.getParameter("idforemitem"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/RemoveItemQuestion.jsp");
+                rd.forward(request, response);
+            }
+            else if(URL.equals("/RemoveItem")){
+                StoreCheckDAO SC = new StoreCheckDAO();
+                SC.delItem((String)request.getParameter("remitemid"));
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+            }
+            else if(URL.equals("/CancelRemove")){
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
+                rd.forward(request, response);
+            }
+            else if(URL.equals("/Sales")){
+                RequestDispatcher rd;
+                StoreCheckDAO SC = new StoreCheckDAO();
+                Store store =(Store)request.getSession().getAttribute("store");
+                List<Orders> sales = new ArrayList<Orders>();
+                try{sales =(List<Orders>) SC.getStoreSales(store.getId());
+                List<Storeitems> items= new ArrayList<Storeitems>();
+                
+                for(int i = 0;i<sales.size();i++){
+                    Storeitems si = (Storeitems)SC.getItem(sales.get(i).getItemId());    
+                    items.add(si);
+                    request.getSession().setAttribute("itemssoldinthestore", items);
+                }
+                }catch(java.lang.IndexOutOfBoundsException ex){}
+                
+                   
+                rd=request.getRequestDispatcher("/Pages/Store/Sales.jsp");
+                rd.forward(request, response);
+            }
+            
 
     }
 
