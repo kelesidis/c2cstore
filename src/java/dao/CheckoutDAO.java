@@ -38,6 +38,16 @@ public class CheckoutDAO{
         }
     }
     
+    public Orders getOrder(int id){
+        Orders order = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        transaction = session.beginTransaction();
+        order = (Orders) session.createQuery ("from Orders as orders where orders.id = '"+id+"'").uniqueResult();    
+
+        return order;
+    }
+    
     public void updateItem(int itemID, int qua){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;

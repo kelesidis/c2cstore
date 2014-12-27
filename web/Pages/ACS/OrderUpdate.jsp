@@ -4,7 +4,6 @@
     Author     : Chris
 --%>
 
-<%@page import="model.CourierModel"%>
 <%@page import="java.util.List"%>
 <%@page import="hibernateModel.Orders"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

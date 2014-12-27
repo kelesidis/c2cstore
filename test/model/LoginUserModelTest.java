@@ -167,8 +167,6 @@ public class LoginUserModelTest {
         instance.setUser(user);
         String result = instance.getRDFoward();
         assertEquals(expResult, result);
-        
-        
     }
     
 }
