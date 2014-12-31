@@ -55,6 +55,7 @@ public class RegisterDAOTest {
         user.setCountry("Greece");
         user.setCity("Kalithea");
         user.setState("Xanthi");
+        user.setAddress("Menelaou Aggelidi 40");
         user.setPostalCode("67100");
         user.setPhone("6971857651");
         RegisterDAO instance = new RegisterDAO();
