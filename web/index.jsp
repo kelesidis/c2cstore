@@ -4,6 +4,9 @@
     Author     : a
 --%>
 
+<%@page import="dao.UserPanelDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="hibernateModel.Storeitems"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,6 +41,29 @@
                 </TABLE>
             </FORM>
         </DIV>
+        <%  
+            UserPanelDAO upd = new UserPanelDAO();
+            List<Storeitems> items = null;
+            items =(List<Storeitems>)upd.retrieveItems();
+            out.print("Current Offers");
+            out.print("<table border = '1'>");
+            out.print("<tr>");
+                out.print("<td></td>");
+                out.print("<td>Price </td>");
+                out.print("<td>Description </td>");
+                out.print("<td>Quantity</td>");
+            out.print("<tr>");
+            for(int i = 0; i<items.size(); i++){
+                    out.print("<tr>");
+                        out.print("<td>Item "+ (i+1)+"</td>");
+                        out.print("<td>" + items.get(i).getPrice()+"</td>");
+                        out.print("<td>" + items.get(i).getDescription()+"</td>");
+                        out.print("<td>" + items.get(i).getQuantity()+"</td>");
+                    out.print("<tr>");
+                out.print("<br />");
+            }
+            out.print("</table>");
+        %>
     </body>
     
     
