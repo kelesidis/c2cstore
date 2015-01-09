@@ -19,6 +19,7 @@
                 out.print(store.getStorename());
             %>
         </h1>
+        <form action="GotoHomepage" method="post"> <input type="submit" value="Home"></form>
         <table>    
             <tr>
                 <form action="Items" method="post"> <td align="right">    <input type="submit" value="Items"> </form></td>  

@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem","/EditItem","/UpdateItem","/RemoveItemQ","/RemoveItem","/CancelRemove","/Sales"})
+@WebServlet(name = "Store", urlPatterns = {"/Store", "/CreateStore","/Items", "/AddItemConf","/AddItem","/EditItem","/UpdateItem","/RemoveItemQ","/RemoveItem","/CancelRemove","/Sales","/GotoHomepage"})
 public class StoreController extends HttpServlet {
 
     @Override
@@ -180,6 +180,14 @@ public class StoreController extends HttpServlet {
                    
                 rd=request.getRequestDispatcher("/Pages/Store/Sales.jsp");
                 rd.forward(request, response);
+            }
+            
+            else if(URL.equals("/GotoHomepage")){
+                
+                RequestDispatcher rd;
+                rd=request.getRequestDispatcher("/Pages/Dashboards/UserDashboard.jsp");
+                rd.forward(request, response);
+            
             }
             
 

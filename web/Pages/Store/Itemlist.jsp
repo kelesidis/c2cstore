@@ -23,6 +23,7 @@
 
            %>
        </h1>
+       <form action="GotoHomepage" method="post"> <input type="submit" value="Home"></form>
        <table style="border: 4px blue ridge">
             <%  
                List<Storeitems> si = null;
