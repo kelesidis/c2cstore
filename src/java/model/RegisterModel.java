@@ -61,6 +61,10 @@ public class RegisterModel {
     public String getRank() {
         return rank;
     }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
     
     public String getName() {
         return name;
