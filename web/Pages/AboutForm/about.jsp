@@ -9,6 +9,7 @@
     
     <BODY>
         <DIV ALIGN="CENTER">
+            <form action="GotoHomepage" method="post"> <input type="submit" value="Home"></form>
             <H1>Software Technology Team:</H1>
             <TABLE BORDER='1'>
                 <TR><TD COLSPAN='2' ALIGN='CENTER'>Team Members</TD></TR>

@@ -4,5 +4,5 @@
     Author     : Chris
 --%>
 
-<p>You have logged out dog</p>  
+<p>You have logged out</p>  
 <%@ include file="/index.jsp" %> 

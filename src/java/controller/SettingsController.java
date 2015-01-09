@@ -12,6 +12,7 @@ import hibernateModel.Store;
 import hibernateModel.Storeitems;
 import hibernateModel.User;
 import java.io.IOException;
+import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,6 +47,7 @@ public class SettingsController extends HttpServlet {
         }
         else if(userPath.equals("/SaveProfile")){
             User user = new User();
+            user = (User) request.getSession().getAttribute("user");
             
             user.setName(request.getParameter("name"));
             user.setLastname(request.getParameter("surname"));
@@ -60,7 +62,6 @@ public class SettingsController extends HttpServlet {
             user.setAddress(request.getParameter("address"));
             user.setPostalCode(request.getParameter("postalcode"));
             user.setPhone(request.getParameter("phone"));
-            user.setRank("user");
             
             SettingsDAO settingsDAO = new SettingsDAO();
             settingsDAO.updateUser(user);
@@ -76,11 +77,12 @@ public class SettingsController extends HttpServlet {
             store = storeCheckDAO.checkForStore(user);
             int storeID = store.getId();
             List<Storeitems> items = null;
-            items = (List<Storeitems>) settingsDAO.retrieveItems(storeID);
+            items = (List<Storeitems>) storeCheckDAO.getItems(store);
             for(int i=0;i<items.size();i++){
-                int itemID = items.indexOf(i);
-                settingsDAO.deleteItem(itemID);
+                //int itemID = items.indexOf(i);
+                storeCheckDAO.delItem(items.get(i).getId().toString());
             }
+            out.print("STOREIDIDIDIDIDIDIDIDIDIDIIDIDID"+storeID);
             settingsDAO.deleteStore(storeID);
             settingsDAO.deleteUserById(user.getId());
             

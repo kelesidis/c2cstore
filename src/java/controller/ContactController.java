@@ -32,11 +32,11 @@ public class ContactController extends HttpServlet {
     {
         String userPath = request.getServletPath();
         if(userPath.equals("aboutFrm")){
-        RequestDispatcher rd = request.getRequestDispatcher("/Pages/aboutForm/about.jsp"); //URL To Send
+        RequestDispatcher rd = request.getRequestDispatcher("/Pages/AboutForm/about.jsp"); //URL To Send
         rd.forward(request, response); //Forward Request
         }
         else{
-            RequestDispatcher rd = request.getRequestDispatcher("/Pages/aboutForm/about.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/AboutForm/about.jsp");
             try
         {
             String mailMessage = request.getParameter("mailMsg");

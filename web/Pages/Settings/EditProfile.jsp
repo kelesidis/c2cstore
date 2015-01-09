@@ -13,27 +13,32 @@
         <title>Edit Profile</title>
     </head>
     <body>
+         <% 
+             
+           User ur = (User)request.getSession().getAttribute("user");
+           
+         %>
         <table>
             <form action="SaveProfile" method="post">
                 <tr>
                     <td>Name:</td>
-                    <td align="right"><input type="text" name="name" required></td>
+                    <td align="right"><input type="text" name="name" value=<%out.print(ur.getName());%> required></td>
                 </tr>
                 <tr>
                     <td>Surname:</td>
-                    <td align="right"><input type="text" name="surname" required></td>
+                    <td align="right"><input type="text" name="surname" value=<%out.print(ur.getLastname());%> required></td>
                 </tr>
                 <tr>
                     <td>User Name:</td>
-                    <td align="right"><input type="text" name="username" placeholder="5-15 Characters" required></td>
+                    <td align="right"><input type="text" name="username" value=<%out.print(ur.getUsername());%>  required></td>
                 </tr>
                 <tr>
                     <td>E-mail:</td>
-                    <td align="right"><input type="email" name="email"  placeholder="Enter a valid email" required></td> 
+                    <td align="right"><input type="email" name="email"  value=<%out.print(ur.getEmail());%> required></td> 
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td align="right"><input type="password" name="password" required></td>
+                    <td align="right"><input type="password" name="password" value=<%out.print(ur.getPassword());%> required></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -52,31 +57,31 @@
                 </tr>
                 <tr>
                     <td>Answer:</td>
-                    <td align="right"><input type="text" name="securityanswer" required></td>
+                    <td align="right"><input type="text" name="securityanswer" value=<%out.print(ur.getSecretA());%> required></td>
                 </tr>
                 <tr>
                     <td>Country:</td>
-                    <td align="right"><input type="text" name="country" required></td>
+                    <td align="right"><input type="text" name="country" value=<%out.print(ur.getCountry());%> required></td>
                 </tr>
                 <tr>
                     <td>City:</td>
-                    <td align="right"><input type="text" name="city" required></td>
+                    <td align="right"><input type="text" name="city" value=<%out.print(ur.getCity());%> required></td>
                 </tr>
                 <tr>
                     <td>State:</td>
-                    <td align="right"><input type="text" name="state" required></td>
+                    <td align="right"><input type="text" name="state" value=<%out.print(ur.getState());%> required></td>
                 </tr>
                 <tr>
                     <td>Address:</td>
-                    <td align="right"><input type="text" name="address" required></td>
+                    <td align="right"><input type="text" name="address" value=<%out.print(ur.getAddress());%> required></td>
                 </tr>
                 <tr>
                     <td>Postal Code:</td>
-                    <td align="right"><input type="text" name="postalcode" required></td>
+                    <td align="right"><input type="text" name="postalcode" value=<%out.print(ur.getPostalCode());%> required></td>
                 </tr>
                 <tr>
                     <td>Phone:</td>
-                    <td align="right"><input type="text" name="phone" required></td>
+                    <td align="right"><input type="text" name="phone" value=<%out.print(ur.getPhone());%> required></td>
                 </tr>
                 <tr>
                     <td></td>

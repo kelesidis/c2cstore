@@ -67,7 +67,7 @@ public class PassrecoverController extends HttpServlet {
             
                 PassrecoverModel prm = new PassrecoverModel();
                 User ur =(User) request.getSession().getAttribute("userwhoforgotpass");
-                if(prm.checkSecretQ(ur.getSecretQ(), request.getParameter("secretquestion"))){
+                if(prm.checkSecretQ(ur.getSecretA(), request.getParameter("secretquestion"))){
                     String newpass = prm.generatepass();
                     PasswordRecoveryDAO prd = new PasswordRecoveryDAO();
                     prd.UpdatePassword(ur.getId().toString(), newpass);
