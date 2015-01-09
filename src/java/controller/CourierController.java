@@ -16,12 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author Chris
  */
-@WebServlet(name = "CourierController", urlPatterns = {"/SearchOrders", "/CloseOrder"})
+@WebServlet(name = "CourierController", urlPatterns = {"/SearchOrders", "/CloseOrder", "/Back"})
 public class CourierController extends HttpServlet {
 
     @Override
@@ -49,6 +48,9 @@ public class CourierController extends HttpServlet {
             orders = (List<Orders>) cd.retrieveOrders();
             request.getSession().setAttribute("allOrders", orders);
 
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/ACS/Courier.jsp");
+            rd.forward(request, response);
+        } else if (userPath.equals("/Back")) {
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/ACS/Courier.jsp");
             rd.forward(request, response);
         }

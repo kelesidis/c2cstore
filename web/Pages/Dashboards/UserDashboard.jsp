@@ -9,7 +9,6 @@
         <title>c2c Homepage</title>
     </head>
     <body>
-       <p>You are successfully logged in!</p><br />
        <%  
             User user=(User)request.getSession().getAttribute("user");//.getAttribute("bean");  
             out.print("Welcome, "+user.getName());

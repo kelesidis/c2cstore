@@ -34,5 +34,7 @@
         %>
         <form action="CloseOrder" method="POST"><input type="submit" value="Close Order">
         </form>
+        <form action="Back"><input type="submit" value="Home">
+        </form>
     </body>
 </html>
