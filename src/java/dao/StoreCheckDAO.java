@@ -83,7 +83,7 @@ public class StoreCheckDAO{
     }
     
    
-    public void addItem(String desc,String quantity, Store store, String price, String category){
+    public void addItem(String desc,String quantity, Store store, String price, String category, String url){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         tx = session.beginTransaction();
@@ -92,7 +92,7 @@ public class StoreCheckDAO{
         Storeitems item = new Storeitems();
         item.setDescription(desc);
         item.setPrice(price);
-        item.setPhoto1("1");
+        item.setPhoto1(url);
         item.setPhoto2("2");
         item.setPhoto3("3");
         item.setQuantity(Integer.parseInt(quantity));

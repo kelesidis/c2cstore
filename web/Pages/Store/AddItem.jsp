@@ -52,6 +52,10 @@
                 <td><input type="text" name="price" required></td>
             </tr>
             <tr>
+                <td align="right">Photo URL :</td>
+                <td><input type="text" name="photourl" required></td>
+            </tr>
+            <tr>
                 <td align="right">    <input type="submit" value="Add Item"> </form></td>  
             </tr>
         </table>

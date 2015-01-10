@@ -19,7 +19,7 @@
     
     </head>
     <body>
-        <% 
+        <% out.print(ivm.getItem().getPhoto1());
            out.print("<h3>Item : </h3>"+ivm.getItem().getDescription());
            out.print("<br><h3>Price : </h3>"+ivm.getItem().getPrice()+"$");
            out.print("<br><h3>In stock : </h3>"+ivm.getItem().getQuantity());
@@ -29,6 +29,7 @@
            out.print("<br><h3>Seller's address : </h3>"+ivm.getUser().getCountry()+" ,"+ivm.getUser().getCity()+" , Postal Code :"+ivm.getUser().getPostalCode());
            out.print("<form action=\"Additem\" method=\"post\">");
            out.print("<input type=\"text\" name=\"quantity\">");
+           
            out.print("<input type=\"hidden\" value="+ivm.getItem().getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"Add to Cart\"></form>");
         %>
         <form action="Cart" method="post"> <input type="submit" value="Cart"></form> 

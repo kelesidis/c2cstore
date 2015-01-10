@@ -113,7 +113,7 @@ public class StoreController extends HttpServlet {
             } 
             else if(URL.equals("/AddItem")){
                 StoreCheckDAO SC = new StoreCheckDAO();
-                SC.addItem(request.getParameter("desc"), request.getParameter("qua"),(Store)request.getSession().getAttribute("store"),request.getParameter("price"), request.getParameter("category"));
+                SC.addItem(request.getParameter("desc"), request.getParameter("qua"),(Store)request.getSession().getAttribute("store"),request.getParameter("price"), request.getParameter("category"),request.getParameter("photourl"));
                 RequestDispatcher rd;
                 rd=request.getRequestDispatcher("/Pages/Store/Store.jsp");
                 rd.forward(request, response);

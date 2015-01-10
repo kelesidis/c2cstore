@@ -21,7 +21,7 @@
             <column name="Description" length="45" not-null="true" />
         </property>
         <property name="photo1" type="string">
-            <column name="Photo1" length="100" not-null="true" />
+            <column name="Photo1" length="400" not-null="true" />
         </property>
         <property name="photo2" type="string">
             <column name="Photo2" length="100" not-null="true" />
