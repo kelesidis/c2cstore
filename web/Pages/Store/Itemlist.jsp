@@ -53,7 +53,11 @@
                          out.print("<td style=\"border:  2px black ridge\"><form action=\"RemoveItemQ\" method=\"post\"><input type=\"hidden\" value="+i+" name=\"idforemitem\" /> <input type=\"submit\" value=\"Remove\"></form></td>");
                          
                         out.print("</tr>");
+                        
+                        
+                        
                     }
+                    
                }
                
 

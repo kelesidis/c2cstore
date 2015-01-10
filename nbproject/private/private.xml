@@ -3,33 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/src/java/controller/LoginController.java</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/src/java/controller/AdminController.java</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/src/java/model/LoginUserModel.java</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/SuperUserDashboard.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/ModeratorDashboard.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/src/java/controller/ModeratorController.java</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/src/java/dao/ModeratorDAO.java</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/ListUser.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/DeleteCat.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/DeleteItem.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/DeleteStore.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/DeleteUser.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/ListCat.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/ListItems.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/ListModerator.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/ListOrders.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/ListStore.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/catUpdate.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/categorySuccess.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/createCategory.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/createUser.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/itemUpdate.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/menu.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/updatedsuccess.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Admin/userupdate.jsp</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/src/java/dao/AdminDAO.java</file>
-            <file>file:/C:/Users/Denis/Desktop/chris/c2cstore/web/Pages/Dashboards/Moderator/CreateUser.jsp</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/dao/StoreCheckDAOIT.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/controller/pseudocontroller/PSEUDO_StoreController.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/controller/CatalogueControllerTest.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/dao/CatalogueDAOIT.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/src/java/dao/CatalogueDAO.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/src/java/controller/CatalogueController.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/controller/pseudocontroller/PSEUDO_CatalogueController.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/controller/pseudocontroller/PSEUDO_ItemViewController.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/controller/StoreControllerTest.java</file>
+            <file>file:/D:/TEI/TL/ProjectFinal/LASTITERATION2/c2cstore/test/controller/ItemViewControllerTest.java</file>
         </group>
     </open-files>
 </project-private>
