@@ -29,7 +29,7 @@
                 <tr>
                     <td>E-mail:</td>
                     <td align="right"><input type="email" name="email"  placeholder="Enter a valid email" required></td> 
-                    <td><label for="male" style="color: #CC0000">You have already register with that email</label></td>
+                    
                 </tr>
                 <tr>
                     <td>Password:</td>
