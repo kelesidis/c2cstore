@@ -1,70 +1,169 @@
-<%-- 
-    Document   : index
-    Created on : Nov 8, 2014, 5:53:31 PM
-    Author     : a
---%>
-
 <%@page import="dao.UserPanelDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="hibernateModel.Storeitems"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome</title>
-    </head>
-    <body>
-       <table>
-            <form action="Index" method="post">
-            <tr>
-                <td align="right">NAME:</td>
-                <td><input type="text" name="name"></td>
-            </tr>
-            <tr>
-                <td align="right">PASSWORD:</td>
-                <td><input type="password" name="password"></td>
-            </tr>
-            <tr>
-                <td align="right">    <input type="submit" value="login"> </form></td>
-                <td> <form action="Register" method="post"> <input type="submit" value="Register"> </form> </td>
-                <td> <form action="Catalogue" method="post"> <input type="submit" value="Catalogue"> </form> </td>
-                <td> <form action="passrecover" method="post"> <input type="submit" value="Forgot Password?"> </form> </td>
-            </tr>
-        </table>
+<HTML>
+    <HEAD>
+        <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
+        <TITLE>Welcome</TITLE>
+        <STYLE>
+            
+	
+	/* 
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+	@media 
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+	
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr { 
+			display: block;
+                        
+		}
+		
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr { 
+			position: absolute;
+                        top: -9999px;
+			left: -9999px;
+		}
+		
+		tr { border: none ; 
+                 width: auto;
+                }
+		
+		td { 
+			/* Behave  like a "row" */
+			border:  chartreuse;
+                         //background-color: #f3f3f3;
+			//border-bottom: 1px solid #eee; 
+			position: relative;
+			//padding-left: 50%; 
+		}
+		
+		td:before { 
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 6px;
+			left: 6px;
+			width: 45%; 
+			padding-right: 10px; 
+			white-space: nowrap;
+		}
+		
+		/*
+		Label the data
+		*/
+		td:nth-of-type(1):before { content: "Description:"; }
+		td:nth-of-type(2):before { content: "Price:"; }
+		td:nth-of-type(3):before { content: "Quantity:"; }
+		
+	}
+	
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body { 
+			padding: 0; 
+			margin: 0; 
+			width: 320px; }
+		}
+	
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		body { 
+			width: 495px; 
+		}
+	}
+	
+        </STYLE>
+    </HEAD>
+    <BODY BGCOLOR="#777777">
         <DIV ALIGN="CENTER">
-            <FORM ACTION="Search" METHOD="POST">
-                <TABLE>
-                    <TR>
-                        <TD><INPUT TYPE="TEXT" NAME="searchKey" PLACEHOLDER="3 Chars Minimum"/><INPUT TYPE="SUBMIT" VALUE="Search" NAME="searchBtn"/></TD>
-                    </TR>
-                </TABLE>
-            </FORM>
+            <TABLE>
+                <TR ALIGN="CENTER">
+                    <TH>
+                        <H1 ID="eshopHeader">C2C Store</H1>
+                    </TH>
+                </TR>
+                <FORM ACTION="Index" METHOD="POST">
+                <TR COLSPAN="2" ALIGN="CENTER">
+                    <TH>
+                        <INPUT TYPE="TEXT" NAME="name" ID="signUpInStyle" PLACEHOLDER="Username" REQUIRED/>
+                    </TH>
+                </TR>
+                <TR COLSPAN="2" ALIGN="CENTER">
+                    <TH>
+                        <INPUT TYPE="PASSWORD" NAME="password" ID="signUpInStyle" PLACEHOLDER="Password" REQUIRED/>
+                    </TH>
+                </TR>
+                <TR>
+                    <TH ALIGN="CENTER">
+                        <INPUT TYPE="SUBMIT" VALUE="Login" ID="buttonInputStyling"/></FORM>
+                        <FORM ACTION="Register" METHOD="POST">
+                            <INPUT TYPE="SUBMIT" VALUE="Register" ID="buttonInputStyling">
+                        </FORM>
+                    </TH>
+                </TR>
+                <TR ALIGN="CENTER">
+                    <TH>
+                        <FORM ACTION="Catalogue" METHOD="POST">
+                            <INPUT TYPE="SUBMIT" VALUE="Catalogue" ID="buttonInputStyling"/>
+                        </FORM>
+                    </TH>
+                </TR>
+                <TR ALIGN="CENTER">
+                    <TH>
+                        <FORM ACTION="passrecover" METHOD="POST">
+                            <INPUT TYPE="SUBMIT" VALUE="Forgot Password?" ID="transLinkLike"/>
+                        </FORM>
+                    </TH>
+                </TR>
+            </TABLE>
         </DIV>
+        <BR/>
+        <BR/>
+        <BR/>
+        <DIV ALIGN="CENTER">
+            <TABLE>
+                <TR>
+                    <TH>
+                        <FORM ACTION="Search" METHOD="POST">
+                            <INPUT TYPE="TEXT" NAME="searchKey" PLACEHOLDER="3 Chars Minimum" REQUIRED ID="searchInButton"/>
+                            <INPUT TYPE="SUBMIT" VALUE="Search" NAME="searchBtn" ID="greenLinkLike"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        </FORM>
+                    </TH>
+                </TR>
+            </TABLE>
+        </DIV>
+        <BR/>
         <%  
             UserPanelDAO upd = new UserPanelDAO();
             List<Storeitems> items = null;
             items =(List<Storeitems>)upd.retrieveItems();
-            out.print("Current Offers");
-            out.print("<table border = '1'>");
-            out.print("<tr>");
-                out.print("<td></td>");
-                out.print("<td>Price </td>");
-                out.print("<td>Description </td>");
-                out.print("<td>Quantity</td>");
-            out.print("<tr>");
-            for(int i = 0; i<items.size(); i++){
-                    out.print("<tr>");
-                        out.print("<td>Item "+ (i+1)+"</td>");
-                        out.print("<td>" + items.get(i).getPrice()+"</td>");
-                        out.print("<td>" + items.get(i).getDescription()+"</td>");
-                        out.print("<td>" + items.get(i).getQuantity()+"</td>");
-                    out.print("<tr>");
-                out.print("<br />");
+            out.print("<DIV ALIGN='CENTER'><TABLE STYLE='color: #FFFFFF;' border='5'><THEAD>");
+            out.print("<TR ALIGN='CENTER'><TD COLSPAN='3'><H3>Offers!</H3></TD></TR>");
+            out.print("<TR>");
+            out.print("<TH>Description </TH>");
+            out.print("<TH>Price</TH>");
+            out.print("<TH>Quantity</TH>");
+            out.print("</THEAD></TR>");
+            for(int i = 0; i<items.size(); i++)
+            {
+                out.print("<TR ALIGN='CENTER'>");
+                out.print("<TD>" + items.get(i).getDescription() + "</TD>");
+                out.print("<TD>" + items.get(i).getPrice() + "</TD>");
+                out.print("<TD>" + items.get(i).getQuantity() + "</TD>");
+                out.print("</TR>");
             }
-            out.print("</table>");
+            out.print("</TABLE></DIV>");
         %>
-    </body>
-    
-    
-</html>
+    </BODY>
+</HTML>

@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link  type="text/css" rel="stylesheet" href="/myStyle.css">
+       
         <title>Mod list page</title>
         
          <!--[if !IE]><!-->
@@ -39,7 +40,7 @@
 		}
 		
 		tr { border: 1px solid #CC0000 ; 
-                 width: 230px;
+                 width:auto;
                 }
 		
 		td { 
@@ -49,6 +50,7 @@
 			border-bottom: 1px solid #eee; 
 			position: relative;
 			padding-left: 50%; 
+                        width: auto;
 		}
 		
 		td:before { 

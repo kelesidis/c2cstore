@@ -1,14 +1,15 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Please feel in your details</title>
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
+        <title>Sign Up</title>
     </head>
     <body>
-        <table>
+        <DIV ALIGN="CENTER">
+            <H1></H1>
+        <table STYLE="color: #FFFFFF;">
             <form action="RegisterValidate" method="post">
                 <tr>
                     <td>Name:</td>
