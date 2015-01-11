@@ -1,32 +1,27 @@
-<%-- 
-    Document   : Store
-    Created on : Dec 4, 2014, 10:24:19 PM
-    Author     : a
---%>
-
 <%@page import="hibernateModel.Store"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
         <title>Store</title>
     </head>
     <body>
-        <h1>
+        <DIV ALIGN='CENTER'>
+        <h1 ID="eshopHeader">
             <%  
                 Store store=(Store)request.getSession().getAttribute("store"); 
                 out.print(store.getStorename());
             %>
         </h1>
-        <form action="GotoHomepage" method="post"> <input type="submit" value="Home"></form>
         <table>    
             <tr>
-                <form action="Items" method="post"> <td align="right">    <input type="submit" value="Items"> </form></td>  
-            </tr>
-            <tr>
-                <form action="Sales" method="post"> <td align="right">    <input type="submit" value="Sales"> </form></td>  
+                <TD><form action="GotoHomepage" method="post"> <input type="submit" value="Home" ID="buttonInputStyling"></form></TD>
+                <TD><form action="Items" method="post"> <td align="right">    <input type="submit" value="Items" ID="buttonInputStyling"> </form></td>  
+                <TD><form action="Sales" method="post"> <td align="right">    <input type="submit" value="Sales" ID="buttonInputStyling"> </form></td>  
             </tr>
         </table>
+        </DIV>
     </body>
 </html>

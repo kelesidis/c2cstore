@@ -13,8 +13,14 @@
         <title>Delete Profile</title>
     </head>
     <body>
-        <p>Are you sure you want to delete your profile?</p>
-        <form action="DeleteProfileSure"><input type="submit" value="Yes" /></form>
-        <form action="Settings"><input type="submit" value="No" /></form>
+        <DIV ALIGN="CENTER">
+        <p STYLE="color: #FF0000; font-size: 30px;">Are you sure you want to delete your profile?</p>
+        <TABLE>
+            <TR>
+                <TD><form action="DeleteProfileSure"><input type="submit" value="Yes" ID="greenTransBox"/></form></TD>
+                <TD><form action="Settings"><input type="submit" value="No" ID="redTransBox"/></form></TD>
+            </TR>
+        </TABLE>
+        </DIV>
     </body>
 </html>

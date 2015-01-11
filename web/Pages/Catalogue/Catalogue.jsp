@@ -8,7 +8,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create Store</title>
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
+        <title>Catalogue</title>
         <STYLE>
             
 	
@@ -34,15 +35,15 @@
 			left: -9999px;
 		}
 		
-		tr { border: 1px solid #CC0000 ; 
+		tr { border: none ; 
                  width: auto;
                 }
 		
 		td { 
 			/* Behave  like a "row" */
 			border:  chartreuse;
-                         background-color: #f3f3f3;
-			border-bottom: 1px solid #eee; 
+                         background-color: transparent;
+			border-bottom: none; 
 			position: relative;
 			padding-left: 50%; 
 		}
@@ -91,23 +92,23 @@
         </STYLE>
     </head>
     <body>
-         <h1>
-
-       </h1>
+        <DIV ALIGN='RIGHT'>
+            <form action="Cart" method="post"> <input type="submit" value="Cart" ID='buttonInputStyling'></form>
+        </DIV>
          <% 
              
            List<Categories> cats = (List<Categories>)request.getSession().getAttribute("categories");
            out.print("<DIV ALIGN='CENTER'><TABLE>");
            for(int i = 0 ; i<cats.size();i++){
-           out.print("<TR ALIGN='CENTER'><TD>");
-               out.print("<form action=\"Showcat\" method=\"post\"><input type=\"hidden\" value="+cats.get(i).getId()+" name=\"catid\" /> <input type=\"submit\" value="+cats.get(i).getCategoriename()+"></form>");
-           out.print("</TD></TR>");
+           out.print("<TR ALIGN='CENTER'><TH>");
+               out.print("<form action=\"Showcat\" method=\"post\"><input type=\"hidden\" value="+cats.get(i).getId()+" name=\"catid\"/> <input type=\"submit\" value="+cats.get(i).getCategoriename()+" ID='buttonInputStyling'></form>");
+           out.print("</TH></TR>");
            }
            out.print("</TABLE></DIV>");
          
          %>
-         <DIV ALIGN='CENTER'>
-       <table style="border: 4px blue ridge">
+         <DIV ALIGN='CENTER' style="color: #FFFFFF;">
+       <table style="border: 4px #FFFFFF ridge">
             <%  
                List<Storeitems> si = null;
                si=(List<Storeitems>)request.getSession().getAttribute("catalogueitemlist");//.getAttribute("bean");
@@ -139,10 +140,10 @@
                          
                          out.print("<td>"+si.get(i).getCategories().getCategoriename()+ "</td>");
 
-                         out.print("<td><form action=\"Additem\" method=\"post\"><input type=\"text\" name=\"quantity\" SIZE='2'><input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"Add\"></form></td>");
+                         out.print("<td><form action=\"Additem\" method=\"post\"><input type=\"text\" name=\"quantity\" SIZE='2' REQUIRED ID='signUpInStyle'><input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"Add\" ID='redInputStyling'></form></td>");
                          
                          //out.print("<td> </td>");
-                         out.print("<td><form action=\"Viewitem\" method=\"post\"> <input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"View\"></form></td>");
+                         out.print("<td style='border-bottom: 1px solid #FFFFFF;'><form action=\"Viewitem\" method=\"post\"> <input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"View\" ID='redInputStyling'></form></td>");
                          
                         out.print("</tr>");
                     }
@@ -152,6 +153,5 @@
            %>
         </table>
          </DIV>
-        <form action="Cart" method="post"> <input type="submit" value="Cart"></form>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : WrongSecretQ
-    Created on : Dec 21, 2014, 10:18:13 PM
-    Author     : a
+    Document   : noUser
+    Created on : 21 Νοε 2014, 3:12:03 μμ
+    Author     : Admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Wrong secret question!</h1>
+        <DIV ALIGN='CENTER'>
+        <h1 STYLE="color: #FF0000;">Wrong answer!</h1>
+        </DIV>
     </body>
 </html>
