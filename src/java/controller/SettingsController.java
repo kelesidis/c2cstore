@@ -20,12 +20,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Chris
  */
-@WebServlet(name = "Settings", urlPatterns = {"/Settings", "/EditProfile", "/DeleteProfile", "/SaveProfile"})
+@WebServlet(name = "Settings", urlPatterns = {"/Settings", "/EditProfile", "/DeleteProfile", "/SaveProfile", "/DeleteProfileSure"})
 public class SettingsController extends HttpServlet {
 
     @Override
@@ -35,20 +36,16 @@ public class SettingsController extends HttpServlet {
 
         String userPath = request.getServletPath();
 
-        
-
         if (userPath.equals("/Settings")) {
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/Settings/Settings.jsp");
             rd.forward(request, response);
-        }
-        else if(userPath.equals("/EditProfile")){
+        } else if (userPath.equals("/EditProfile")) {
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/Settings/EditProfile.jsp");
             rd.forward(request, response);
-        }
-        else if(userPath.equals("/SaveProfile")){
+        } else if (userPath.equals("/SaveProfile")) {
             User user = new User();
             user = (User) request.getSession().getAttribute("user");
-            
+
             user.setName(request.getParameter("name"));
             user.setLastname(request.getParameter("surname"));
             user.setUsername(request.getParameter("username"));
@@ -62,36 +59,47 @@ public class SettingsController extends HttpServlet {
             user.setAddress(request.getParameter("address"));
             user.setPostalCode(request.getParameter("postalcode"));
             user.setPhone(request.getParameter("phone"));
-            
+
             SettingsDAO settingsDAO = new SettingsDAO();
             settingsDAO.updateUser(user);
-            
+
             RequestDispatcher rd = request.getRequestDispatcher("/Pages/Dashboards/UserDashboard.jsp");
             rd.forward(request, response);
-        }
-        else if(userPath.equals("/DeleteProfile")){
+        } else if (userPath.equals("/DeleteProfileSure")) {
             User user = (User) request.getSession().getAttribute("user");
             StoreCheckDAO storeCheckDAO = new StoreCheckDAO();
             SettingsDAO settingsDAO = new SettingsDAO();
             Store store = new Store();
             store = storeCheckDAO.checkForStore(user);
-            int storeID = store.getId();
-            List<Storeitems> items = null;
-            items = (List<Storeitems>) storeCheckDAO.getItems(store);
-            for(int i=0;i<items.size();i++){
-                //int itemID = items.indexOf(i);
-                storeCheckDAO.delItem(items.get(i).getId().toString());
+
+            if (store != null) {
+                List<Storeitems> items = null;
+                items = (List<Storeitems>) storeCheckDAO.getItems(store);
+                if (items != null) {
+                    for (int i = 0; i < items.size(); i++) {
+                        storeCheckDAO.delItem(items.get(i).getId().toString());
+                    }
+                }
+                settingsDAO.deleteStore(store.getId());
+                settingsDAO.deleteUserById(user.getId());
+
+            } else if (user != null) {
+
+                settingsDAO.deleteUserById(user.getId());
             }
-            out.print("STOREIDIDIDIDIDIDIDIDIDIDIIDIDID"+storeID);
-            settingsDAO.deleteStore(storeID);
-            settingsDAO.deleteUserById(user.getId());
-            
+
+            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            rd.forward(request, response);
+
+        } else if (userPath.equals("/DeleteProfile")) {
+            RequestDispatcher rd = request.getRequestDispatcher("/Pages/Settings/DeleteProfile.jsp");
+            rd.forward(request, response);
         }
 
-}
+    }
 
-@Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         doPost(req, resp);
     }

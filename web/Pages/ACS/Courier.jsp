@@ -17,6 +17,8 @@
         <form action="SearchOrders" method="POST">
             Enter Order Code<input type="text" name="ordercode"><input type="submit" value="Search">
         </form>
+        <form action="Logout"><input type="submit" value="Logout">
+        </form>
         <%
             List<Orders> orders = null;
             orders = (List<Orders>) request.getSession().getAttribute("allOrders");
