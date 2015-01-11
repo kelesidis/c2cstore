@@ -25,7 +25,7 @@ import model.CartItemModel;
  *
  * @author Chris
  */
-@WebServlet(name = "CheckoutController", urlPatterns = {"/Checkout", "/CompleteOrder", "/AnotherAddress", "/Homepage","/Indexx"})
+@WebServlet(name = "CheckoutController", urlPatterns = {"/Checkout", "/CompleteOrder", "/AnotherAddress", "/Homepage"})
 public class CheckoutController extends HttpServlet {
 
     @Override

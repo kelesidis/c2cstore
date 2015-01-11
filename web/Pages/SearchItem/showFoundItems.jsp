@@ -5,35 +5,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
         <title>Items Found</title>
     </head>
     <body>
-        <h1>Items Found:</h1>
-        <table style="border: 4px blue ridge">
+        <DIV ALIGN="CENTER">
+        <h1 ID="eshopHeader">Items Found:</h1>
+        <table style="color: #FFFFFF;">
             <%  
                 List<Storeitems> si = null;
                 si=(List<Storeitems>)request.getSession().getAttribute("searchResultList");
-                out.print("Item List : </br>");
                 if(si!=null)
                 {
+                    out.print("<TR ALIGN='CENTER' style='color: #00FF00;'>");
+                    out.print("<td style='border-bottom: 1px solid #ffffff;'>ItemID : </td>");
+                    out.print("<td style='border-bottom: 1px solid #ffffff;'>Description : </td>");
+                    out.print("<td style='border-bottom: 1px solid #ffffff;'>Price : </td>");
+                    out.print("<td style='border-bottom: 1px solid #ffffff;'>Quantity : </td>");
+                    out.print("<td style='border-bottom: 1px solid #ffffff;'>Categorie : </td>");
+                    out.print("</TR>");
                     for(int i = 0; i<si.size();i++)
                     {
-                        out.print("<tr style=\"border: 2px black ridge\">");
-                        out.print("<td style=\"border:  2px black ridge\">ItemID : </td>");
-                        out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getId()+ "</td>");
-                        out.print("<td style=\"border:  2px black ridge\">Description : </td>");
-                        out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getDescription()+ "</td>");
-                        out.print("<td style=\"border:  2px black ridge\">Price : </td>");
-                        out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getPrice()+ " $</td>");
-                        out.print("<td style=\"border:  2px black ridge\">Quantity : </td>");
-                        out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getQuantity()+ "</td>"); 
-                        out.print("<td style=\"border:  2px black ridge\">Categorie : </td>");
-                        out.print("<td style=\"border:  2px black ridge\">"+si.get(i).getCategories().getCategoriename()+ "</td>"); 
-                        out.print("<td style=\"border:  2px black ridge\"><form action=\"Additem\" method=\"post\"> <input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"Add\"></form></td>"); 
+                        out.print("<tr ALIGN='CENTER'>");
+                        
+                        out.print("<td>"+si.get(i).getId()+ "</td>");
+                        
+                        out.print("<td>"+si.get(i).getDescription()+ "</td>");
+                        
+                        out.print("<td>"+si.get(i).getPrice()+ " $</td>");
+                        
+                        out.print("<td>"+si.get(i).getQuantity()+ "</td>"); 
+                        
+                        out.print("<td>"+si.get(i).getCategories().getCategoriename()+ "</td>"); 
+                        out.print("<td><form action=\"Additem\" method=\"post\"> <input type=\"hidden\" value="+si.get(i).getId()+" name=\"itemid\" /> <input type=\"submit\" value=\"Add\" ID='redInputStyling'></form></td>"); 
                         out.print("</tr>");
                     }
                }
             %>
         </table>
+        </DIV>
     </body>
 </html>

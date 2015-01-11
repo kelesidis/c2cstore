@@ -1,4 +1,4 @@
-
+<LINK REL="stylesheet" HREF="indexStyle.css"/>
 <DIV ALIGN="CENTER">
-    <P>No keyword entered!</P>
+    <P ID="eshopHeader">No keyword entered!</P>
 </DIV>

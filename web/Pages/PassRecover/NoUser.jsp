@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>No username</h1>
+        <DIV ALIGN='CENTER'>
+        <h1 STYLE="color: #FF0000;">Username not found!</h1>
+        </DIV>
     </body>
 </html>

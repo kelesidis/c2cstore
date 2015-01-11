@@ -4,12 +4,13 @@
 <HTML>
     <HEAD>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
         <TITLE>About Us</TITLE>
     </HEAD>
     
     <BODY>
-        <DIV ALIGN="CENTER">
-            <form action="GotoHomepage" method="post"> <input type="submit" value="Home"></form>
+        <DIV ALIGN="CENTER" STYLE="color: #FFFFFF;">
+            <form action="GotoHomepage" method="post"> <input type="submit" value="Home" ID="buttonInputStyling"></form>
             <H1>Software Technology Team:</H1>
             <TABLE BORDER='1'>
                 <TR><TD COLSPAN='2' ALIGN='CENTER'>Team Members</TD></TR>
@@ -39,18 +40,19 @@
                 </TR>
             </TABLE>
         </DIV>
-        <P>Date: <%= new java.util.Date().toString() %></P>
-        <P>Write mail and click "SEND"</P>
+        <DIV ALIGN="CENTER">
         <FORM ACTION="sendTheMail" METHOD="POST">
-            <TABLE>
-                <TR>
-                    <TD><P>Subject: <INPUT TYPE="TEXT" NAME="mailSubj"/></P></TD>
+            <TABLE STYLE="color: #FFFFFF;">
+                <TR ALIGN="CENTER">
+                    <TD><P>Subject: <INPUT TYPE="TEXT" NAME="mailSubj" ID="signUpInStyle"/></P></TD>
                 </TR>
                 <TR>
-                    <TD><TEXTAREA COLS="50" ROWS="10" NAME="mailMsg"></TEXTAREA></TD>
-                    <TD><INPUT TYPE="SUBMIT" VALUE="SEND"/></TD>
+                    <TD><TEXTAREA COLS="50" ROWS="10" NAME="mailMsg" STYLE="background-color: transparent;"></TEXTAREA></TD>
+                    <TD><INPUT TYPE="SUBMIT" VALUE="SEND" ID="buttonInputStyling"/></TD>
                 </TR>
             </TABLE>
         </FORM>
+        </DIV>
+        <P STYLE="color: #00FF00;">Date: <%= new java.util.Date().toString() %></P>
     </BODY>
 </HTML>

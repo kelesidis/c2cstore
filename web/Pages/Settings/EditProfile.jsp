@@ -1,44 +1,41 @@
-<%-- 
-    Document   : EditProfile
-    Created on : Jan 8, 2015, 9:41:50 PM
-    Author     : Chris
---%>
-
 <%@page import="hibernateModel.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
         <title>Edit Profile</title>
     </head>
     <body>
+        <DIV ALIGN="CENTER">
+            <H1 STYLE="color: #0000FF; text-shadow: 0px 0px 30px #FF0000; font-family: Palatino;">Edit your profile</H1>
          <% 
              
            User ur = (User)request.getSession().getAttribute("user");
            
          %>
-        <table>
+        <table style="color: #FFFFFF;">
             <form action="SaveProfile" method="post">
                 <tr>
                     <td>Name:</td>
-                    <td align="right"><input type="text" name="name" value=<%out.print(ur.getName());%> required></td>
+                    <td align="right"><input type="text" name="name" value=<%out.print(ur.getName());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>Surname:</td>
-                    <td align="right"><input type="text" name="surname" value=<%out.print(ur.getLastname());%> required></td>
+                    <td align="right"><input type="text" name="surname" value=<%out.print(ur.getLastname());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>User Name:</td>
-                    <td align="right"><input type="text" name="username" value=<%out.print(ur.getUsername());%>  required></td>
+                    <td align="right"><input type="text" name="username" value=<%out.print(ur.getUsername());%>  required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>E-mail:</td>
-                    <td align="right"><input type="email" name="email"  value=<%out.print(ur.getEmail());%> required></td> 
+                    <td align="right"><input type="email" name="email"  value=<%out.print(ur.getEmail());%> required ID="signUpInStyle"></td> 
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td align="right"><input type="password" name="password" value=<%out.print(ur.getPassword());%> required></td>
+                    <td align="right"><input type="password" name="password" value=<%out.print(ur.getPassword());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -57,37 +54,37 @@
                 </tr>
                 <tr>
                     <td>Answer:</td>
-                    <td align="right"><input type="text" name="securityanswer" value=<%out.print(ur.getSecretA());%> required></td>
+                    <td align="right"><input type="text" name="securityanswer" value=<%out.print(ur.getSecretA());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>Country:</td>
-                    <td align="right"><input type="text" name="country" value=<%out.print(ur.getCountry());%> required></td>
+                    <td align="right"><input type="text" name="country" value=<%out.print(ur.getCountry());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>City:</td>
-                    <td align="right"><input type="text" name="city" value=<%out.print(ur.getCity());%> required></td>
+                    <td align="right"><input type="text" name="city" value=<%out.print(ur.getCity());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>State:</td>
-                    <td align="right"><input type="text" name="state" value=<%out.print(ur.getState());%> required></td>
+                    <td align="right"><input type="text" name="state" value=<%out.print(ur.getState());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>Address:</td>
-                    <td align="right"><input type="text" name="address" value=<%out.print(ur.getAddress());%> required></td>
+                    <td align="right"><input type="text" name="address" value=<%out.print(ur.getAddress());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>Postal Code:</td>
-                    <td align="right"><input type="text" name="postalcode" value=<%out.print(ur.getPostalCode());%> required></td>
+                    <td align="right"><input type="text" name="postalcode" value=<%out.print(ur.getPostalCode());%> required ID="signUpInStyle"></td>
                 </tr>
                 <tr>
                     <td>Phone:</td>
-                    <td align="right"><input type="text" name="phone" value=<%out.print(ur.getPhone());%> required></td>
+                    <td align="right"><input type="text" name="phone" value=<%out.print(ur.getPhone());%> required ID="signUpInStyle"></td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td align="right"><input type="submit" value="Save Changes"></td>
+                <tr align="center">
+                    <td colspan="2"><input type="submit" value="Save Changes" ID="buttonInputStyling"></td>
                 </tr>
             </form>
         </table>
+        </DIV>
     </body>
 </html>

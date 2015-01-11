@@ -31,7 +31,7 @@ public class ContactController extends HttpServlet {
     throws IOException, ServletException
     {
         String userPath = request.getServletPath();
-        if(userPath.equals("aboutFrm")){
+        if(userPath.equals("/aboutFrm")){
         RequestDispatcher rd = request.getRequestDispatcher("/Pages/AboutForm/about.jsp"); //URL To Send
         rd.forward(request, response); //Forward Request
         }

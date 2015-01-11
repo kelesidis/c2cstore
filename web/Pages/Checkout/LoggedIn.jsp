@@ -9,12 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <LINK REL="stylesheet" HREF="indexStyle.css"/>
+        <title>Checkout</title>
     </head>
     <body>
-        <p>Send items to your address, 
+        <DIV ALIGN="CENTER">
+        <p style="color: #FF0000; font-size: 20px;">Send items to your address, 
            or you wish them to delivered to another address?</p>
-        <form action="CompleteOrder" method="post"><input type="submit" value="To my address"></form>
-        <form action="AnotherAddress" method="post"><input type="submit" value="To another address"></form>
+        <form action="CompleteOrder" method="post"><input type="submit" value="To my address" ID="redInputStyling"></form>
+        <form action="AnotherAddress" method="post"><input type="submit" value="To another address" ID="redInputStyling"></form>
+        </DIV>
     </body>
 </html>
